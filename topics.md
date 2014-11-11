@@ -1,29 +1,28 @@
-Week 1
-======
+# Week 1
 
 - Topics: Introductions, Tools, Overview, Groovy
 - Concepts: Dependency Injection, Dynamic Programming Languages
 
-Week 2
-======
+---
 
-- Topics: Testing, Spock, Grails Basics
+# Week 2
 
-gvm
-===
+- Topics: Grails Basics, Testing, Spock
+- Concepts: Grails dependencies
 
-Grails dependencies
-===================
+---
 
-Week 3
-======
+# Week 3
 
 - Topics: Domain Data, ORM, GORM, NoSQL
 
-Week 4
-======
+---
+
+# Week 4
 
 - Topics: HTTP Requests, Controllers, Mappings, Views
+
+---
 
 Week 5
 ======
