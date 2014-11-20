@@ -1,4 +1,4 @@
-footer: © Citronella Software Ltd 2014
+footer: © Citronella Software Ltd 2015
 slidenumbers: true
 
 # Tools
