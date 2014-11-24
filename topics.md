@@ -10,7 +10,7 @@
 
 - Topics: Grails Basics, Testing, Spock
 - Concepts: Grails dependencies
-- Reading: Grails Chapter 1
+- Reading: Grails Chapter 1, 9
 
 ---
 
