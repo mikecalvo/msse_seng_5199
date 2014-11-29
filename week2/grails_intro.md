@@ -141,10 +141,98 @@ git checkout -t origin/master
 ---
 
 # Grails Concepts
-- Controllers
 - Domain Classes
+- Controllers
+- Views, Tags, Layouts
 - Services
-- Views
-- Tags
 
 ---
+
+# Domain Classes
+- The model of your application
+- Mapped to tables in an RDBMS
+- Class properties are columns
+- Table relationships are mapped as object relationships
+- Live in grails-app/domain
+
+---
+
+# Controllers
+- Respond to HTTP requests
+- Actions: methods which respond do different paths
+- Live in grails-app/controllers
+- Often defined to match Domain Class
+  - Customer -> CustomerController
+  - http://server/app/customer
+
+---
+
+# Controller Responses
+- Direct render (HTML, JSON, XML)
+- Model: data used by view
+- Default view for controller action
+  - Convention-based: grails-app/views/controller/action.gsp
+
+---
+
+# Views
+- Responsible for rendering response
+- Typically HTML intended for browser
+- GSP: Groovy Server Page
+- Code + Markup
+- References model populated by controller
+
+---
+
+# Layouts
+- Templates to provide a common layout for all app pages
+- View contents are merged into a layout
+- Grails uses the SiteMesh framework for layouts
+- Live in grails-app/views/layouts
+
+---
+
+# Tags
+- Reusable bits of view code
+- Typically generate markup that is injected in place in a GSP
+- Radically simpler to create than JSP Custom Tags
+- Live in grails-app/taglib
+
+---
+
+# Scaffolding
+- Dyamically created CRUD actions and views for a controller
+- Good starting point for a basic set of app functionality
+
+```
+class ArtistController {
+  static scaffold = true
+}
+```
+
+---
+
+# Services
+- Reusable behavior shared by controllers
+  - Grails makes all services available to controllers
+- Can be transactional
+- Live in grails-app/services
+
+---
+
+# Live Updating of Changes
+- Development cycle:
+  1. Start server
+  1. Make code changes
+  1. Save
+  1. Refresh your browser and see the changes reflected
+- No more restart/redeploy of app!
+
+---
+
+# Command line
+- Use grailsw to perform many common actions
+- ./grailsw run-app
+- ./grailsw test-app
+- ./grailsw war
+- ./grailsw create-controller
