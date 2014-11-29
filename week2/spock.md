@@ -98,6 +98,62 @@ then:
 
 ---
 
+# Mocks
+- Spock supports mocking of all non-final Java and Groovy classes
+- Creating a mock: `def s = Mock(TypeToBeMocked)`
+- Calling a method on a mock instance signifies that it is expected to be invoked
+- Interactions can be required or optional (cardinality)
+- Constraints can be placed on arguments
+
+---
+
+# Cardinalities
+- Place expectations on the number of times an interaction happens:
+
+```
+n * subscriber.receive(event)      // exactly n times
+(n.._) * subscriber.receive(event) // at least n times
+(_..n) * subscriber.receive(event) // at most n times
+```
+
+---
+
+# Argument Constraints
+- No arguments: m.method()
+- Any argument: m.method(_)
+- Any non-null argument: m.method(!null)
+- Any argument of a specific type: m.method(_ as Type)
+- A specific argument: m.method(value)
+- A custom constraint: m.method({ it.name == 'oi!'})
+
+---
+
+# Return values
+- Returning a single value:
+`subscriber.isAlive() >> true`
+- Returning a different value per invocation:
+`subscriber.isAlive() >>> [true, false, true]`
+- Defining a new implementation:
+`subscriber.isAlive() >> { random.nextBoolean() }`
+
+---
+
+# Mock Example
+```
+setup:
+def event = new Event()
+def subscriber = Mock(Subscriber)
+subscriber.isAlive() >> true // global interaction
+
+when:
+publisher.send(event)
+
+then:
+1 * subscriber.receive(event) // local interaction
+```
+
+---
+
 # Full Example
 ```
 class MySpec extends Specification {
