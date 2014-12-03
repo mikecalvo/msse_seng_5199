@@ -1,7 +1,7 @@
 footer: © Citronella Software Ltd 2015
 slidenumbers: true
 
-# GORM
+# GORM Basics
 ## Mike Calvo
 ### mike@citronellasoftware.com
 
