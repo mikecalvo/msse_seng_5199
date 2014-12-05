@@ -24,7 +24,7 @@ slidenumbers: true
 ---
 
 # Environment Metadata
-- Describes the current active grails environment (development, test, prod)
+- Describes the current active grails environment (development, test, produnction)
 - Bootstrap provides an environment block which will only run when the environment matches the block
 - Alternatively check Environment.current to see which is currently running
 
