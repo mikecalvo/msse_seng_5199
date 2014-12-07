@@ -1,31 +1,26 @@
 # Week 1
-
 - Topics: Introductions, Tools, Overview, Groovy
 - Concepts: Dynamic Programming Languages
 - Reading: Grails Chapter 2
 
 ---
-
 # Week 2
-
 - Topics: Grails Basics, Testing, Spock
 - Concepts: Dependency Injection, Grails dependencies
 - Reading: Grails Chapter 1, 9, https://code.google.com/p/spock/wiki/SpockBasics
 
 ---
-
 # Week 3
-
 - Topics: Domain Data, GORM, Queries, NoSQL
 - Concepts: ORM
 - Reading: Grails Chapter 3, 5, 16
 
 ---
-
 # Week 4
 
-- Topics: HTTP Requests, Controllers, Mappings, Views
+- Topics: Web Basics HTTP Requests, Controllers, Mappings, Views
 - Reading: Grails Chapter 6
+- Concepts: HTTP, HTML
 
 ---
 
