@@ -108,7 +108,87 @@ log4j = {
 ---
 
 # Criteria Queries
+- Construct your queries using a builder style pattern
+- Combine criteria using and() and or() methods
+- Criteria are methods (instead of operators in where queries)
+- Useful for constructing dynamic queries
+
+---
+
+# Example Criteria Query
+```
+User.withCriteria {
+  and {
+    ilike 'email', '%mike%'
+    if (fromDate) {
+      ge 'dateCreated', fromDate
+    }
+  }
+}
+```
+
+---
+
+# Referencing Related Properties
+- Create a block with the related field
+
+```
+// Find all songs who's artist is U2
+Song.withCriteria {
+  artist { eq 'name', 'U2' }
+}
+```
+
+---
+
+# Query Projections
+- Projections are aggregations or filtering functions applied to queries
+- They provide for grouping by properties
+- Commonly used projection functions are count, min, max, avg, and sum
+- Results for projections are lists of lists rather than domain instances
+
+---
+
+# Example Projection
+- Find a count of songs by artist name
+```
+Song.withCriteria {
+  createAlias 'artist', 'a'  // this lets me reference artist in projection
+
+  projections {
+    groupProperty 'a.name'
+    count id
+  }
+}
+```
 
 ---
 
 # HQL
+- This is most familiar to Hiberate users
+- SQL-like language
+- Similar to JDBC style queries with parameters
+- Not portable non-relational stores
+- Supports everything criteria queries do
+- Additionally update queries can be performed via HQL
+
+---
+
+# Example HQL Statements
+```
+// Find all users with email that contains mike
+// Parameters can be positional
+User.findAll('from User u where user.email like ?', ['%mike%'])
+
+// Parameters can be named
+User.findAll('from User u where user.email like :n', [n: '%mike%'])
+
+// Make all users with email that contains mike disabled
+User.executeUpdate('update User u set u.enabled=false '+
+  'where u.email like ?', ['%mike%'])
+```
+
+# Query Recommendations
+- Use where queries when possible (easiest to understand)
+- Use the Grails console UI to debug queries
+- Use HQL or Criteria for dynamic queries
