@@ -16,7 +16,7 @@
 
 # Week 3
 
-- Topics: Domain Data, GORM, NoSQL
+- Topics: Domain Data, GORM, Queries, NoSQL
 - Concepts: ORM
 - Reading: Grails Chapter 3, 5, 16
 
