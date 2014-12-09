@@ -117,6 +117,7 @@ slidenumbers: true
   `eg: ArtistController`
 - Default convention for URL-to-controller mapping is
   `/controller/action/id`
+  - See UrlMappings.groovy for this configuration
 
 ---
 # Crazy Simple Controller
@@ -166,145 +167,157 @@ Details for <span id="name">${artist.name}</span>
 ```
 
 ---
-# Functional Tests
-- Testing the view requires an end-to-end style approach
-- Functional tests perform this verification
-  - Server is running
-  - Test issues an HTTP request
-  - Verifies the results against actual HTML and JavaScript runner
+# Default Controller Conventions
+- Responds to URL ending with controller name
+- Actions:
+  - If the controller defines one action it is the default
+  - If the controller defines `index` action it is the default
+  - If a property called `defaultAction` exists it is the default
 
 ---
-# Grails Functional Tests
-- Several plugins exist
-- Example: Geb Plugin
-  - Geb is a Groovy-based browser testing framework
-  - Wrapper over Selenium
-  - Multiple web drivers exist (Chrome, Firefox, PhantomJS)
+# Controller Logging
+- All controllers get a `log` member injected into them
+- This allows for logging at various levels:
+  - debug, error, fatal, info, trace
+
+  `log.info "User ${userid} requested report ${reportId}"`
 
 ---
-# Installing Geb Plugin
-- Add Geb plugins block of BuildConfig.groovy
-- Add Selenium and PhantomJS Test Driver to dependencies block
-- Add Geb spock support to dependencies block
-- Add Remote Control plugin for sending remote Grails commands to app
+# Request Processing
+- All controllers have several request related members injected into them
+- Action info: actionName, actionUri
+- Controller info: controllerName, controllerUri
+- Request: request
+- Request Parameters: params
 
 ---
-# BuildConfig.groovy
+# Request Parameters
+- In addition to params they are available on request as properties
+  - controller/action?userId=1 => request.userId == 1
+- The part of the url after the action is the id parameter
+  - controller/action/1 => request.id == 1
+
+---
+# Redirecting a Request
+- A request can be redirected from an action elsewhere
+- Another action: redirect(action: 'process')
+- Another controller: redirect(controller: 'tax', action: 'calculate')
+- Relative URI: redirect(uri: '../checkout/complete')
+- Absolute URI: redirect(url: 'http://google.com')
+
+---
+# Redirect New Request
+- When redirecting to another controller in app keep in mind that request will be new
+- Parameters need to be included in the redirect if they are important:
+  `redirect(action: 'success', params: params)`
+- Alternatively, use flash scope to make things available in the redirected request
+
+---
+# Why Redirect?
+- Good pattern for providing reliable reload in browser
+- Form submits via HTTP PUT or POST behave poorly when browser refreshed
+  - Are you sure you want to resubmit this POST?
+- Best practice is to redirect back to a display action after processing the form to avoid this
+
+
+---
+# Controller Scopes
+- Values can be stored in several contexts with varying lifetimes
+- request - current request
+- flash - current and next request
+- session - until current user closes browser
+- servletContext - entire Grails application
+- page - available within a GSP
+
+---
+# Returning a Model
+- When rendering a GSP view it is common for an action to return a model
+- The model is commonly domain instances which are needed for the view
+- A model is returned by returning a map from the action
+  - Keys are the names of the variables in the model
+  - Values are the data
+
+---
+# Example Model
 ```
-plugins{
-  test "org.grails.plugins:geb:0.10.0"
-}
-
-dependencies {
-  test "org.gebish:geb-spock:0.10.0"
-  test "org.seleniumhq.selenium:selenium-support:2.44.0"
-  test("com.github.detro.ghostdriver:phantomjsdriver:1.0.1") {
-    transitive = false
-  }
-  compile ":remote-control:1.5"
-}
-```
----
-# More Geb Details
-- Functional tests live under test/functional
-- Geb works with both JUnit and Spock
-- Geb tests are running outside the Grails app
-  - Cannot directly use GORM, Controllers, or Services
-- Provides jQuery style element lookup within Groovy
-
----
-# Remote Control Plugin
-- Allows a external process to send commands to Grails app
-- Pass closures to RemoteControl instance:
-  ```
-  def remote = RemoteControl()
-  def count = remote {
-    // This will get run inside Grails server and returned to test!
-    return Arist.count()
-  }
-  ```
----
-# Adding a Geb Test
-- Geb uses a page-based approach to web testing
-- Each url gets its own Page class which defines the url and interesting elements
-- The Geb test navigates to the page and verifies the results and interacts with the page
-- Pages typically live in a pages package under the test package
-
----
-# Exmaple Get Artist Page
-```
-import geb.Page
-
-class ArtistGetPage extends Page {
-
-  static url = 'artist/get'
-
-  static content = {
-    id { $("#id") }
-    name { $("#name") }
-  }
-
-}
-```
-
----
-# Example Geb Functional Test
-```
-class ArtistFunctionalSpec extends GebSpec {
-
-  // setup code...
-
-  def "gets artist details"() {
-    when:
-    to ArtistGetPage, id: artistId
-
-    then:
-    name.text() == 'U2'
-    id.text() == "Id: ${artistId}"
+class SongController {
+  def show() {
+    def song = Song.get(params.id)
+    [song: song]
   }
 }
 ```
 
 ---
-# Configuring Geb
-- Geb needs to know which test drivers to use
-- Create a file called GebConfig.groovy in the root of tests/functional
-- Define one or more configurations
-  - Type of drivers
-  - Browser size, behaviors, etc
+# Rendering a View
+- By default Grails will look for the matching GSP view for your action
+  `grails-app/views/controller/action.gsp`
+- Alternatively you can render a different view
+  `render(view: 'alternative', model: [song: song])`
+  `render(controller:'artist', view: 'details')`
 
 ---
-# Simple GebConfig.groovy
-```
-import org.openqa.selenium.phantomjs.PhantomJSDriver
-import org.openqa.selenium.remote.DesiredCapabilities
+# HTTP Method Restrictions
+- Actions can check the requested method
+  `if (request.method == 'GET') ...`
+- Controller property `allowedMethods` can declaratively restrict access to actions by method
+  - Grails will return a 405 error code if accessed with improper method
 
-driver = {
-  new PhantomJSDriver(new DesiredCapabilities())
+---
+# Example HTTP Method Restriction
+```
+class SomeController {
+  def allowedMethods = [modify: 'POST', delete['POST', 'DELETE']]
+
+  def modify() {}
+  def retrieve {}
+  def delete {}
+}
+```
+
+---
+# File Uploads
+- Uploading a file requires a special HTML 'file' input:
+  `<input type='file' name='upload'`
+- Controllers can access submitted files via the request:
+  `request.getFile('upload')`
+- Multipart file data can be mapped into domain class
+  - byte[] or String
+
+---
+# File Upload Example
+```
+class FileController {
+  def upload() {
+    def file = request.getFile('upload')
+    if (file && !file.empty) {
+      file.transferTo(new File(pathToFile))
+    }
   }
+}
 ```
 
 ---
-# Running Functional Tests
-`grailsw test-app -functional`
-- Launches the grails app first
-- Runs all tests in tests/functional
+# Writing Binary Responses
+- Images or other binary data may need to be returned from app
+- Response supports writing directly to the output stream
+- Content type should be supplied
 
 ---
-# More on Geb
-- Interact with JavaScript
-- Interact with HTML form elements
-- Test file downloading
-- Much more:
-http://www.gebish.org/manual/current/index.html
+# Example Binary Response
+```
+class ProfileController {
 
----
-# Controllers Deep Dive
-- Much more to learn about controllers
-- Interacting with the request and parameters
-- Various scopes
-- Redirecting
-- Direct Rendering
+  def image() {
+    def profile = Profile.get(id)
+    byte[] img = profile.image
+
+    response.contentType = 'application/octect-stream'
+    response.outputStream << img
+    response.outputStream.flush
+  }
+}
+```
 
 ---
 # GSP Deep Dive
