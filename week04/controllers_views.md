@@ -314,14 +314,174 @@ class ProfileController {
 
     response.contentType = 'application/octect-stream'
     response.outputStream << img
-    response.outputStream.flush
+    response.outputStream.flush()
   }
 }
 ```
 
 ---
-# GSP Deep Dive
-- Scriptlets
-- Expressions
-- Custom Tags
-- Templates
+# Controller Interceptors
+```
+def beforeInterceptor = [action: this.&auth, except: 'login']
+// defined with private scope, so it's not considered an action
+private auth() {
+  if (!session.user) {
+    redirect(action: 'login')
+    return false
+  }
+}
+
+def login() {
+  // display login page
+}
+```
+
+---
+# GSP Code
+- Grails injects all pertinent values:
+  - request, response, session, params, model objects
+- Code can exist
+  - In page (scriptlet): <% def date = new Date() %>
+  - In page (expression): ${model.property}
+
+---
+# GSP Tags
+- Reusable code for GSP
+- Code runs and typically injects markup in place of tag
+- Syntax: <g:tagName attributes />
+- Large set included with Grails
+  - <g:if /> <g:each /> <g: datePicker />
+
+---
+# Essential Tags
+```
+<g:if test="${session.user != null}">
+  Welcome ${session.user.firstName}
+</g:if>
+<g:elseif test="${session.user.name == 'Mike'}">
+  Go away
+<g:/elseif>
+
+<g:each var="n" in="${names}">
+<li>${n}</li>
+</g>
+```
+
+---
+# Link Tags
+```
+<g:link controller="artist" action="create">
+  New Artist
+</g:link>
+
+<img src="<g:createLink controller='image' action='render'/>" />
+
+<link rel="stylesheet"
+  href="${resource(dir:'css',file:'foo.css')}" />
+
+<g:external dir="css" file="foo.css" />
+```
+
+---
+# Form Tags
+```
+<g:form controller="user" action="register"> ... </g:form>
+
+<g:textField name="firstName" value="${user?.firstName}" />
+<g:textArea name="bio" value="${user?.bio}" rows="10" cols="60" />
+
+<g:select name="color" from="${Color.list()}"
+    optionKey="id"
+    optionValue="displayName"
+    noSelection="${'null': 'Please Chose a Color'}" />
+
+<g:hiddenField name="rendered" value="${new Date()}" />
+```
+
+---
+# Many More Tags
+- Advanced controls
+  - g:datePicker, g:currencySelect, g:paginate, g:countrySelect
+- Displaying resources
+  - g:message
+- Displaying errors
+  - g:hasErrors, g:renderErrors
+
+---
+
+# Custom Tags
+- Write your own tags
+- Conventions:
+  - Live in grails-app/taglib
+  - NameTagLib is class name
+
+---
+# Example TagLib
+```
+class DateTagLib {
+  def dateFromNow { attrs->
+    def niceDate = formatNiceDate(attrs.date)
+    out << niceDate
+  }
+}
+
+In page:
+<g:dateFromNow date="${post.created}" />
+```
+
+---
+# TagLib Namespace
+- g: is the default namespace for Grails plugins
+- Plugins often use a different prefix for tags part of plugin
+- Define a static namespace value in your TagLib to override default
+  `static namespace = 'mz'`
+
+---
+# Templates
+- Reusable chunks of HTML markup
+- Defined common layouts
+- Can refer to all scoped variables GSPs can
+- GSP pages starting with _ are templates
+- Including a template: <g:render template="X" />
+
+---
+# Layouts
+- Grails uses Sitemesh to provide view layouts
+- They live in grails-app/views/layouts
+- A Layout is a normal GSP file
+  - Includes special tags for inserting content into the layout
+  - g:layoutHead and g:layoutBody
+
+---
+# Example Layout
+```html
+<html>
+  <head>
+    <g:layoutHead />
+  </head>
+  <body>
+    <!-- some common header or menu -->
+    <g:layoutBody>
+  </body>
+</html>
+```
+
+---
+# Triggering a Layout
+```html
+<html>
+  <head>
+    <title>My Page's Title</title>
+    <meta name="layout" content="main" />
+  </head>
+  <body>
+    My page's content here
+  </body>
+</html>
+```
+
+---
+# Summary
+- Controllers: respond to user interactions
+- Views: present a UI or front-end for the system
+- What's next: Functionally testing them

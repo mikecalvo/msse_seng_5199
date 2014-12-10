@@ -18,14 +18,14 @@
 ---
 # Week 4
 
-- Topics: Web Basics HTTP Requests, Controllers, Mappings, Views
+- Topics: Web Basics HTTP Requests, Controllers,Views
 - Concepts: HTTP, HTML, Functional Testing
-- Reading: Grails Chapter 6
+- Reading: Grails Chapter 6, 8
 
 ---
 # Week 5
 
-- Topics: Grails Plugins, Security
+- Topics: Mappings, Grails Plugins, Security
 - Reading Grails Chapter 10, 11
 
 Assignment 1 Due
