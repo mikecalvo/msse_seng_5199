@@ -25,8 +25,9 @@
 ---
 # Week 5
 
-- Topics: Mappings, Grails Plugins, Security
-- Reading Grails Chapter 10, 11
+- Topics: Grails Services, Security
+- Concepts: Transactions
+- Reading Grails Chapter 7, 11
 
 Assignment 1 Due
 
