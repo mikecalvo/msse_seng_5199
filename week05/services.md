@@ -65,12 +65,27 @@ slidenumbers: true
   1. Runtime Exception: Rollback transaction
 
 ---
+# Transactional Behavior
+- Only available via dependency injection
+- Creating a new service instance will not work
+- Spring provides transactional behavior
+- Checked exceptions are not automatically rolled back
+
+---
+# Hibernate Session and Rollback
+- Hibernate session is closed on rollback
+- Subsequent attempts to reference lazy loaded relationships will fail
+- Solutions:
+  - Eagerly fetch the relationship before rollback
+  - Redirect to new request after rollback
+
+---
 # Changing Service Transactions
 - To disable automatic transactions on service:
 `static transactional = false`
 - @Transactional
   - Mark method or class as transactional
-  - readOnly attribute improves performance by not requring commit after method completes
+  - readOnly attribute improves performance by not requiring commit after method completes
 - Good idea to think about read only methods
 
 ---
@@ -156,3 +171,10 @@ class PostController {
   - request: new services for each request
   - session: new service for each session
   - singleton: default (does not need to be specified)
+
+---
+# Example Service
+- Create a service for the muzic app to add a play of a song
+- Look up the artist by name and create it if not found
+- Look up the song by name and create it if not found
+- Add a play
