@@ -27,7 +27,7 @@
 
 - Topics: Grails Services, Security
 - Concepts: Transactions
-- Reading Grails Chapter 7, 11
+- Reading Grails Chapter 7.1, 11, http://grails.org/doc/latest/guide/security.html
 
 Assignment 1 Due
 
@@ -42,7 +42,7 @@ Assignment 1 Due
 
 # Week 7
 
-- Topics: Services, Messaging, Scheduling, Transactions
+- Topics: Services, Messaging, Scheduling
 
 ---
 
