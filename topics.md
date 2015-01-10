@@ -6,7 +6,7 @@
 ---
 # Week 2
 - Topics: Grails Basics, Testing, Spock
-- Concepts: Dependency Injection, Grails dependencies
+- Concepts: Grails dependencies
 - Reading: Grails Chapter 1, 9, https://code.google.com/p/spock/wiki/SpockBasics
 
 ---
@@ -18,7 +18,7 @@
 ---
 # Week 4
 
-- Topics: Web Basics HTTP Requests, Controllers,Views
+- Topics: Web Basics HTTP Requests, Controllers, Views
 - Concepts: HTTP, HTML, Functional Testing
 - Reading: Grails Chapter 6, 8
 
@@ -26,8 +26,8 @@
 # Week 5
 
 - Topics: Grails Services, Security
-- Concepts: Transactions
-- Reading Grails Chapter 7.1, 11, http://grails.org/doc/latest/guide/security.html
+- Concepts: Transactions, Dependency Injection
+- Reading Grails Chapter 7.1, 11, 14 http://grails.org/doc/latest/guide/security.html
 
 Assignment 1 Due
 

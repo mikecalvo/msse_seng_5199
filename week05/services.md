@@ -6,6 +6,11 @@ slidenumbers: true
 ### mike@citronellasoftware.com
 
 ---
+# Services with Detours
+- Transactions
+- Dependency Injection
+
+---
 # Services Defined
 - Architectural layer of Grails
 - Reusable business logic
@@ -30,7 +35,7 @@ slidenumbers: true
 - Any non-UI handling logic
 
 ---
-# Quick Transaction Review
+# Detour 1:  Transaction Review
 - Sequence of operations that should be treated as a single operation
 - Only succeeds if every operation succeeds
 - Can be nested
@@ -136,9 +141,65 @@ class PostServiceSpec extends Specification {
   }
 }
 ```
+
+---
+# Detour #2: Dependency Injection
+- Based on Inversion of Control pattern
+- class A depends on class B
+- Don't have A create B - let a container 'inject' it
+
+---
+# Example Without IOC
+- Class A cannot be tested without testing class B as well
+
+```
+class A {
+
+  A() {
+    B b = new B()
+    b.doSomething()
+  }
+}
+```
+
+---
+# Example With IOC
+
+```
+class A {
+
+  B b
+
+  A() {
+    b.doSomething()
+  }
+}
+
+```
+---
+# Dependency Injection Benefits
+- Makes code more unit testable
+- Allows for more flexible component relationships
+- Supports Aspect-Oriented Programming (AOP)
+  - Container injects 'wrapped' version
+  - This is how Spring provides transactional support
+
+---
+# Dependency Autowiring
+- Spring wire beans by name or by type
+- In Grails the convention is to wire by name
+
+---
+# Other Injectable Spring Beans
+- grailsApplication
+- sessionFactory
+- groovyPagesTemplateEngine
+- messageSource
+
 ---
 # Using A Service
 - Inject the service into your controller by adding a member matching your service name:
+
 ```
 class PostController {
   def postService
@@ -178,3 +239,10 @@ class PostController {
 - Look up the artist by name and create it if not found
 - Look up the song by name and create it if not found
 - Add a play
+
+---
+# Testing Transactions
+- Integration tests are run inside a transaction by default and are automatically rolled back after each test
+  - Integration tests for rollbacks must be marked as transactional = false
+- Writing functional tests requires actually writing to the data store
+  - Be sure to include flush: true on saves for setup data
