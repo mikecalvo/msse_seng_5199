@@ -72,6 +72,7 @@ slidenumbers: true
 ---
 # Transactional Behavior
 - Only available via dependency injection
+- Only works when called externally
 - Creating a new service instance will not work
 - Spring provides transactional behavior
 - Checked exceptions are not automatically rolled back
@@ -92,6 +93,43 @@ slidenumbers: true
   - Mark method or class as transactional
   - readOnly attribute improves performance by not requiring commit after method completes
 - Good idea to think about read only methods
+
+---
+# withTransaction Alternative
+- Grails/GORM provides a withTransaction method on all domain classes
+- This allows for fine-grained transactions which can be defined anywhere
+  - Controllers
+  - Scripts
+  - Integration Tests
+
+---
+# withTransaction Example
+
+```
+class AlbumController {
+
+  def addAlbum(String title, String artistName) {
+    Album.withTransaction { TransactionStatus status ->
+      Artist artist = Artist.findByName(artistName)
+      if (!artist) {
+        artist = new Artist(name: artistName).save()
+      }
+      Album album = Album.findByTitle(title)
+      if (album && album.artist.name != artistName) {
+        status.setRollbackOnly()
+      }
+      else {
+        new Album(title: title, artist: artist).save()
+      }
+    }
+  }
+}
+```
+
+---
+# Notes on withTransaction
+- Service-based transactions are preferred
+- Doesn't matter which domain class you call it on
 
 ---
 # Creating a Service
@@ -246,3 +284,11 @@ class PostController {
   - Integration tests for rollbacks must be marked as transactional = false
 - Writing functional tests requires actually writing to the data store
   - Be sure to include flush: true on saves for setup data
+
+---
+# Final Recommendations
+- Use services for business logic
+- Leverage Dependency Injection
+  - Prefer singleton scope for Spring beans
+  - Use Spring DSL (over XML)
+- Update the database within transactions

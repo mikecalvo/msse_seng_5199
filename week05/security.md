@@ -1,9 +1,15 @@
 footer: © Citronella Software Ltd 2015
 slidenumbers: true
 
-# Grails Security
+# Web and Grails Security
 ## Mike Calvo
 ### mike@citronellasoftware.com
+
+---
+# Disclaimers
+- I am not an expert
+- There's an entire course on this topic
+- It's super important
 
 ---
 # Price of Success
@@ -15,6 +21,7 @@ slidenumbers: true
 - Code injection
   - Submit data to server in a way that it will unknowingly be run
   - Various forms: SQL injection, Cross Site Scripting
+- Gaining unauthorized access to sensitive data
 
 ---
 # Grails Provides Help
@@ -27,7 +34,9 @@ slidenumbers: true
 ---
 # Useful Strategies
 - Input validation
+- Access control
 - Parameterized domain queries
+
 ---
 # Validate User Input
 - Never allow limitless queries of data

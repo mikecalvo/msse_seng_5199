@@ -25,9 +25,9 @@
 ---
 # Week 5
 
-- Topics: Grails Services, Security
+- Topics: Grails Services, Plugins, Security
 - Concepts: Transactions, Dependency Injection
-- Reading Grails Chapter 7.1, 11, 14 http://grails.org/doc/latest/guide/security.html
+- Reading Grails Chapter 7.1, 10, 11, 14 http://grails.org/doc/latest/guide/security.html
 
 Assignment 1 Due
 
