@@ -135,6 +135,23 @@ slidenumbers: true
 - Users can have many Roles
 
 ---
+# How S2 Works
+- Pages are assumed to be secure by default
+- Servlet filter intercepts inbound HTTP request
+- If request is not protected it lets it through
+- Checks the Session for an authenticated user
+- If there is no authenticated user or the user is missing required role route to login page
+- Otherwise let the request through
+
+---
+# What is a Role?
+- String value
+- Describes a type of use of the system
+  - Examples: Admin, User, Moderator
+- May be more fine-grained or permission based
+  - Examples: View Posts, Create Posts, Moderate Posts
+
+---
 # Setting up Spring Security
 `grails s2-quickstart <domain-package> <user> <role>`
 - Generates domain classes for access control
@@ -145,8 +162,9 @@ slidenumbers: true
 ---
 # Protecting Access
 - Static config: urls are mapped to Roles in Config.groovy
-- Dynamic - request map is stored in database
 - Annotations - controllers and services can be annotated with Spring Security
+  `@Secured(value=["hasRole('ADMIN')"])`
+- Dynamic - request map is stored in database
 
 ---
 # Example
@@ -168,3 +186,30 @@ slidenumbers: true
 - grails.plugin.springsecurity.auth.loginFormUrl
 - grails.plugin.springsecurity.failureHandler.defaultFailureUrl
 - grails.plugin.springsecurity.successHadler.defaultTargetUrl
+
+---
+# Protecting By User Id
+- Some data can only be seen by the logged in user
+  - Example: View/Edit user profile
+- @Secured annotation allows a closure to define the security
+
+```
+@Secured(closure = {
+  authentication.username = params.id
+  })
+def editProfile() {
+
+}
+```
+
+---
+# Example: Muzic Edit Profile Page
+- Add a simple profile edit page
+- Restrict access to the current logged-in user
+- Add some functional tests
+
+---
+# Security Recap
+- Security is important and complex
+- Leverage frameworks (like Grails and Spring Security)
+- Code reviews help
