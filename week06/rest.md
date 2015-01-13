@@ -176,3 +176,7 @@ class Post {
 
 }
 ```
+
+---
+# Muzic Song REST Resource
+- Make the Song domain class available for REST calls
