@@ -155,6 +155,13 @@ slidenumbers: true
 
 [{'name': 'Mike'}, {'name': 'Lars'}]
 ```
+---
+# XML versus JSON
+- World is moving away from XML
+- Reduced complexity and smaller payloads is driving this
+- XML is a pain to process in just about every language
+- XML still exists in the wild but primarily in legacy systems
+- Bad smell if an external system is only XML-based
 
 ---
 # Grails and REST
@@ -180,3 +187,36 @@ class Post {
 ---
 # Muzic Song REST Resource
 - Make the Song domain class available for REST calls
+
+---
+# UrlMappings/RestController Approach
+- grails-app/conf/UrlMappings.groovy contains definitions for how URLs are mapped to controllers
+- URLs can be mapped as 'resources' or 'resource' in this file:
+  `"/api/artists"(resources: 'artistRest')` for resources with multiple values
+  `"/api/config"(resource: 'configRest')` for resources with a single value
+- Specify the controller name for the resource
+- Create this contorller and make it a subclass of RestfulController
+
+---
+# Muzic Artist REST Resource
+- Add an Artist resource via the UrlMappings/RestController approach
+- Add a unit test for the controller verifying the REST methods work
+
+---
+# Custom Grails REST Services
+- Like scaffolding - simple Grails REST support is great for getting things up and running
+- Like scaffolding it lacks the flexibility to be useful in most real-world situations
+
+---
+# Limitations of @Resource and RestfulController Approaches
+- Response payloads too closely tied to domain model
+  - Updates to domain model may unintentionally break clients
+  - Timeline for API changes may be different than timeline for business or domain  changes
+  - May not want to expose all fields of domain model to clients
+- Error handling/reporting a bit generic
+
+---
+# Approaches to Detaching API Payload
+- Programmatically convert domain into payload
+- Create seperate model for API payload (DTO approach)
+- Modify the serialization of the domain into destination format
