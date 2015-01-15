@@ -213,10 +213,139 @@ class Post {
   - Updates to domain model may unintentionally break clients
   - Timeline for API changes may be different than timeline for business or domain  changes
   - May not want to expose all fields of domain model to clients
+  - Includes implementation-specific fields like the Groovy Type
 - Error handling/reporting a bit generic
 
 ---
 # Approaches to Detaching API Payload
 - Programmatically convert domain into payload
+  - Builder patterns can be useful here
 - Create seperate model for API payload (DTO approach)
-- Modify the serialization of the domain into destination format
+- Modify the marshalling of the domain into destination format
+
+---
+# Registering a JSON Marshaller
+- Code can be tied in via Bootstrap or a custom Spring bean
+
+```
+JSON.registerObjectMarshaller(Song) { Song s ->
+  return [ id: s.id, title: s.title, artist: s.artist.name ]
+}
+```
+
+---
+# Renders versus Converters
+- Both are responsible for serializing onjects to JSON or XML
+- Converters are the built-in Grails mechanism
+- Renderers are external libraries or custom approaches
+  - Common library for JSON serialization in Java is Jackson
+
+---
+# Custom REST Controller
+- Most of the time, real-world situations require implementing your own controller to handle REST requests
+- Good news: only 4 actions required
+- Handy method: respond
+  - Renders the argument to the response
+  - Allows for a HTTP response status to be specified
+
+---
+# Return Proper Status
+- 200 : OK - response handled properly
+- 201 : Created - return after a successful POST
+- 400 : Bad Request - invalid parameters
+- 403 : Unauthorized - failure to authenticate, not logged in
+- 403 : Forbidden - missing required permission
+- 404 : Not Found - item requested is missing
+- 415 : Unsupported Media Type - data not in correct format
+- 422 : Unprocessable Entity - failed validation
+
+---
+# Protect Access to Proper HTTP Method
+- In custom controller:
+
+```
+static allowedMethods = [save: "POST", update: "PUT", patch: "PATCH", delete: "DELETE"]
+```
+
+---
+# REST API Security
+- Protect access
+  - Suggested: Basic HTTP Authentication
+- Know who is making calls
+  - Reporting
+  - Throttling
+  - Suggested: API Key
+
+---
+# Basic HTTP Authentication
+- Client includes credentials in the header of every request
+- Must use HTTPS to prevent sending of plain text credentials
+- Spring Security provides an implementation of Basic HTTP Authentication
+
+---
+# API Versioning
+- New data formats may break existing clients
+- Several options for solving
+  - Create new URL with a version URL path (/v2/songs)
+  - Rely on a request header from client to format the proper response
+  - Create a custom MIME type and respond with different renderings for each
+    - Honor the Accept HTTP header
+
+---
+# Custom Marshalling
+- Grails allows for multiple marshallers to be registered per format type
+- Perform this registration at startup (prior to any requests being processed)
+- The configuration to use can specified at response render time
+
+---
+# Register Custom Marshalling Example
+
+```
+JSON.createNamedConfig('v1') { cfg ->
+  cfg.registerObjectMarshaller(Post) { Post p ->
+    return { message: p.content, user: p.user.loginId }
+  }
+}
+JSON.createNamedConfig('v2') { cfg ->
+  cfg.returnObjectMarsaller(Post) { Post p ->
+    return [
+      message: p.content,
+      user: [id: p.user.loginId, name: p.user.name]
+    ]
+  }
+}
+```
+
+---
+# Choose Marshaller Example
+
+```
+class PostController {
+  def index(String v) {
+    assert !v || v == '1' || v == '2'
+    def config = 'v' + (v ?: 1) // v1, v2, etc..
+    JSON.use(config) {
+      response Post.list()
+    }
+  }
+}
+```
+
+---
+# Grails SOAP Support
+- Grails CXF plugin exposes services as SOAP/WSDL-based web services
+- Use only if you must
+
+---
+# REST Not Just for APIs
+- Single Page commonly use REST within an app
+- UIs are plain HTML and JavaScript (no server rendering)
+- Server sends/receives data from browser via REST
+- Mobile applications also communicate with cloud components
+
+---
+# Final Notes on REST
+- Use the proper HTTP methods and response status code
+- Use the header for client identification
+- All parameters (other than id) should be specified as query parameters
+- Use Postman (Chrome plugin) to quick test/debug non GET calls
