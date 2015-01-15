@@ -168,7 +168,7 @@ class UrlMappings {
 - Alternative option: hyphenation
 - Set grails.web.url.converter = 'hyphenated' in Groovy.config
 
---
+---
 # Implementing A Custom Converter
   - Define class that implements grails.web.UrlConverter
   - Registering the bean with a prefix name of 'grails.web.UrlConverter.bean_name'
