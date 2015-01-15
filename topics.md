@@ -35,7 +35,7 @@ Assignment 1 Due
 
 # Week 6
 
-- Topics: Web Services, REST
+- Topics: Web Services, REST, Url Mappings
 - Reading Grails Chapter 12
 
 ---

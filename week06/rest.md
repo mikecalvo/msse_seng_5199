@@ -332,11 +332,6 @@ class PostController {
 ```
 
 ---
-# Grails SOAP Support
-- Grails CXF plugin exposes services as SOAP/WSDL-based web services
-- Use only if you must
-
----
 # REST Not Just for APIs
 - Single Page commonly use REST within an app
 - UIs are plain HTML and JavaScript (no server rendering)
