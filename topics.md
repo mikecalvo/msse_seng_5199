@@ -1,24 +1,24 @@
 # Week 1
-- Topics: Introductions, Tools, Overview, Groovy
+- Topics: Introductions, Tools, Overview, Groovy (54)
 - Concepts: Dynamic Programming Languages
 - Reading: Grails Chapter 2
 
 ---
 # Week 2
-- Topics: Grails Basics, Testing, Spock
+- Topics: Grails Basics, Testing, Spock (90)
 - Concepts: Grails dependencies
 - Reading: Grails Chapter 1, 9, https://code.google.com/p/spock/wiki/SpockBasics
 
 ---
 # Week 3
-- Topics: Domain Data, GORM, Queries, NoSQL
+- Topics: Domain Data, GORM, Queries, NoSQL (83)
 - Concepts: ORM
 - Reading: Grails Chapter 3, 5, 16
 
 ---
 # Week 4
 
-- Topics: Web Basics HTTP Requests, Controllers, Views
+- Topics: Web Basics HTTP Requests, Controllers, Views (120)
 - Concepts: HTTP, HTML, Functional Testing, Geb
 - Reading: Grails Chapter 6, 8
 
@@ -32,14 +32,14 @@ Assignment 1 Due
 ---
 
 # Week 6
-- Topics: Security, Web Services, REST
+- Topics: Security, Web Services, REST (69)
 - Reading Grails Chapter 11, 12, http://grails.org/doc/latest/guide/security.html
 
 ---
 
 # Week 7
 
-- Topics: Services, Messaging, Scheduling
+- Topics: Services, Messaging, Scheduling (31)
 - Concepts: Transactions, Dependency Injection, Asynchronous Functionality
 - Reading: Grails Chapter 7.1, 14, 15
 
