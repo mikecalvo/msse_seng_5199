@@ -24,25 +24,24 @@
 
 ---
 # Week 5
-
-- Topics: Grails Services, Plugins, Security
-- Concepts: Transactions, Dependency Injection
-- Reading Grails Chapter 7.1, 10, 11, 14 http://grails.org/doc/latest/guide/security.html
+- Topics: Url Mappings, Filters, Plugins (53)
+- Reading Grails Chapter 10, http://grails.org/doc/latest/guide/theWebLayer.html
 
 Assignment 1 Due
 
 ---
 
 # Week 6
-
-- Topics: Web Services, REST, Url Mappings
-- Reading Grails Chapter 12
+- Topics: Security, Web Services, REST
+- Reading Grails Chapter 11, 12, http://grails.org/doc/latest/guide/security.html
 
 ---
 
 # Week 7
 
 - Topics: Services, Messaging, Scheduling
+- Concepts: Transactions, Dependency Injection, Asynchronous Functionality
+- Reading: Grails Chapter 7.1, 14, 15
 
 ---
 
