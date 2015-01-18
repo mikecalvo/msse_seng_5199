@@ -90,16 +90,10 @@ slidenumbers: true
 - JMS Grails plugin provides basic dependencies:
  `compile ":jms:1.3"`
 - Provider required to implement JMS Spec
+
   - ActiveMQ is a popular choice
   - Install the plugin
   - `compile ":activemq:0.4.1"`
-
----
-# ActiveMQ
-- Can also be downloaded and run seperately from Grails
-- More typical configuration for non-development environments
-- Easy to download and get running
-- Add a bean to Groovy.config that connects to external instance of ActiveMQ
 
 ---
 # JMS Grails Plugin
@@ -107,6 +101,13 @@ slidenumbers: true
 - Available in controllers and services
 - Methods for sending JMS messages to Queues and Topics
 - Provides extension for services to be exposed as JMS endpoints (listeners)
+
+---
+# ActiveMQ
+- Can also be downloaded and run seperately from Grails
+- More typical configuration for non-development environments
+- Easy to download and get running
+- Add a bean to Groovy.config that connects to external instance of ActiveMQ
 
 ---
 # JMS Listener example
@@ -123,12 +124,76 @@ class EmailService {
 ```
 
 ---
-# Grails Platform Core: Events API
-- Lightweight messaging API within Grails
+# Muzic: Add JMS Sender
+- When a new song is played (Play instance saved) create a message to notify followers of the artist.
+- Use ActiveMQ as JMS implementation
+- Start ActiveMQ watch the messages arrive via the admin console
+
+---
+# Muzic: Add JMS Listener
+- New domain concept: Follow (Profile following an artist)
+- New domain concept: ProfileMessage (Message for a user's profile)
+- Add a NotificationService that listens for messages
+- It creates a new ProfileMessage for each follower of the artist
+
+---
+# Grails Platform Core
+- Plugin utilities and glue code for 'advanced' Grails plugin development
+- An attempt to extract features out of Grails core to prevent binding plugins to specific Grails versions
+- Goal: allow plugins to remain compatable with Grails versions longer
+
+---
+# Grails Platform Core APIs
+- Configuration: config merging, validation and defaults
+- Security: basic security features most applications require
+- UI Extensions: Tags and helper functions
+- Navigation: Standard way to expose app menu information
+- Events: Lightweight in-app messaging provider
+
+---
+# Platform Core Events API
 - Install platform-core plugin:
-  `compile ":platform-core:1.0.RC5"`
-- Event raising functions added to controllers, domain classes and services
+  `compile ":platform-core:1.0.0"`
+- Event raising functions added to Grails components
 - Events are publish/subscribe event model
+- Simpler alternative to JMS for in-app messaging
+
+---
+# Sending an Event
+- Call the 'event' method within controller or service
+- Specify the name of the topic the event is posted to
+- Specify optional data sent to listeners
+- Specify optional params
+- Specify optional callback function
+
+---
+# Event Parameters
+- timeout
+- namespace: avoids channel naming collisions
+- fork: force event to reuse calling thread
+- gormSession: create new GORM session for new thread
+- onReply
+- onError
+
+---
+# EventReply
+- The event method returns an EventReply
+- Implements Future<Object>
+- waitFor() allows event sending thread to block until event is processed
+- The response from listeners of the event can be retrieved via getValue() or getValues() calls
+
+---
+# Listening for Events
+- Static Registration
+  - Annotate service methods with @Listener
+  - Define topic, namespace (default is name of method)
+- Dynamic Registration
+  - Call 'on' method supplying a topic name and handler closure
+
+---
+# Replying from Listeners
+- Just return an object
+  - This will be available from the EventReply.getValue() call
 
 ---
 # Message Send/Receive Example
@@ -161,26 +226,39 @@ class DeliveryService {
 - GORM generates events for before and after database writes
 - onSaveOrUpdate can be specified with a domain class parameter
 - Return false from before event handlers to prevent the write
+- namespace: 'gorm'
+
+---
+# GORM Event Topics
+- after/beforeInsert
+- after/beforeUpdate
+- after/beforeDelete
+- beforeValidate
+- onSaveOrUpdate
 
 ---
 # GORM Event Examples
 
 ```
 @grails.events.Listener(namespace = 'gorm')
-void onSaveOrUpdate(User) {
+def onSaveOrUpdate(User) {
   // doSomething
 }
 
 @grails.events.Listener(namespace = 'gorm')
-void beforeUpdate(User user) {
+def beforeUpdate(User user) {
   if (!user.loggedIn()) {
     return false
   }
 }
 
 @grails.events.Listener(topic = '*', namespace = 'gorm')
-bfoidBeforeEachGormEvent(EventMessage message) {
+def BeforeEachGormEvent(EventMessage message) {
   // do something
 }
 
 ```
+
+---
+# Muzic: Use Core Events
+- Re-implement the Song Play->Notify Artist Followers logic using the Grails Core Events plugin instead of JMS
