@@ -39,7 +39,7 @@ Assignment 1 Due
 
 # Week 7
 
-- Topics: Services, Messaging, Scheduling (63)
+- Topics: Services, Messaging, Scheduling (73)
 - Concepts: Transactions, Dependency Injection, Asynchronous Functionality
 - Reading: Grails Chapter 7.1, 14, 15
 
