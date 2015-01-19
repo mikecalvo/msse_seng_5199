@@ -24,8 +24,8 @@
 
 ---
 # Week 5
-- Topics: Url Mappings, Filters, Plugins (53)
-- Reading Grails Chapter 10, http://grails.org/doc/latest/guide/theWebLayer.html
+- Topics: Data Binding, Url Mappings, Filters, Plugins (53)
+- Reading Grails Chapter 10, 7.2-7.6
 
 Assignment 1 Due
 
