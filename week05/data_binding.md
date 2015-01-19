@@ -125,5 +125,3 @@ def upload() {
   file.transferTo(new File(basePhotoDir+'/'+params.loginId))
 }
 ```
-
----
