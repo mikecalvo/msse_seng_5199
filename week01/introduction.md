@@ -73,8 +73,8 @@ _I welcome comparisons and discussion especially from those with direct experien
 ---
 
 # Grading
-- 4 programming assignments
-- 25% each
+- 3 programming assignments: 30% each
+- In class code review: 10%
 - Evenly distributed throughout the course
 - Must turn in every assignment to pass
 

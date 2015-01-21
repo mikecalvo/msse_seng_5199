@@ -24,7 +24,7 @@
 
 ---
 # Week 5
-- Topics: Data Binding, Url Mappings, Filters, Plugins (53)
+- Topics: Data Binding, Url Mappings, Filters, Plugins (65)
 - Reading Grails Chapter 10, 7.2-7.6
 
 Assignment 1 Due
@@ -49,13 +49,11 @@ Assignment 1 Due
 
 - Topics: Introduction to HTML, CSS, JavaScript
 
-Assignment 2 Due
-
 ---
 
 # Week 9
 
-- Topics: jQuery, underscore Mobile views, Twitter Bootstrap
+- Topics: jQuery, underscore, Mobile views, Twitter Bootstrap
 
 ---
 
@@ -63,14 +61,13 @@ Assignment 2 Due
 
 - Topics: AngularJS Introduction, Concepts, Controllers
 - Reading: Grails Chapter 13
+Assignment 2 Due
 
 ---
 
 # Week 11
 
 - Topics: AngularJS: Routers, Services, Resources
-
-Assignment 3 Due
 
 ---
 
@@ -90,4 +87,4 @@ Assignment 3 Due
 
 - Topics: Minification, Obfuscation, NodeJS, Grunt
 
-Assignment 4 Due
+Assignment 3 Due
