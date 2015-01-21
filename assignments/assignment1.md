@@ -1,6 +1,4 @@
 Goals:
-Unit Testing
-Integration Tests
 Mocks
 
 ---
