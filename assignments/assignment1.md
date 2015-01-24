@@ -1,6 +1,3 @@
-Goals:
-Mocks
-
 ---
 # Assignment #1
 ## sellit.com
@@ -10,7 +7,6 @@ Mocks
 # Introduction
 - Implement an auction system similar to eBay
 - Project will be completed in a series of 3 assignments
-- The first assignment will focus on the domain and data layer
 
 ---
 # Deliverables
@@ -19,57 +15,50 @@ Mocks
   - ./grailsw test-app
   - ./grailsw run-app
   - ./grailsw archive
-1. All requirements implemented and tested
-  - Specific types of tests (unit, integration or either) will be specified
+1. All requirements implemented and tested with passing tests
 
----
 # Account Requirements
+- Create web app page allowing a user to create an account
+- Account creation requires email, password, name, address
+- Password must be 8-16 characters with at least 1 number and 1 letter
+- Create web application screen to display/edit account details
+- Edit/Detail page must show date account created and last updated date
 
 ---
-- To list or bid at sellit.com a person must have an account
-- A1: Account must include email, name, password, created date fields (unit)
-- A2: Email must be unique (integration)
-- A3: Email must have a valid email form (*@*.[com|net|edu...]) (integration)
-- A4: Password must be 8-16 characters with at least 1 number and 1 letter (unit)
+# Create Listing Requirements
+- Create a web app page allowing a user to create a listing
+- Listing is required to have a name, description, start date, listing days and starting price
+- Listing page requires a seller acount to be selected
+- Listing page requires a deliver option to be selected (US Only, Worldwide, Pick Up Only)
 
 ---
-# Listing Requirements
-
----
-- L1: Listings are required to have a name, created date, description, start date/time, number of days and starting bid price (unit)
-- L2: Listing requires a delivery options: US Only, Worldwide, Pickup Only (unit)
-- L3: Listing requires a seller (unit)
-- L4: Start time must be in the future (integration)
-- L5: Listing name must be less than 64 characters (integration)
-- L6: Listing has an optional collection of images (up to 5) (unit)
+# Show Listings
+- A listing is complete when the current date is after the start date plus listing days has passed
+- Create a web app page showing non-expired listings
+- Listing page supports searching for a listing by name or description
+- Listing page will show 10 listings at a time and support paging
+- Listing page will allow searching for completed listings (checkbox)
+- Selecting a listing from the list page will take user to a listing detail page where the listing details are displayed
 
 ---
 # Category Requirements
+- When creating a listing provide the option of putting the listing in a category
+- Categories are hierarchical (Electronics->Computers->Mac)
+- User can specify category through a dropdown (select) or typeahead control.  The hierarchy of the category selected must be evident to the user
+- Create a web app page that shows the complete category hierarchy
 
----
-- Listings can be placed in categories which help shoppers find them
-- C1: A category consists of a name, description, and 0..n child categories (unit)
-- C2: The category tree must be saved in a database (integration)
-- C3: A listing must have a category to be created (integration)
-- C4: A category must exist before a listing is created (cannot be created as part of creating a listing) (integration)
-
----
 # Bidding Requirements
-
----
-- A bid is the intent of specifying a price for which they will pay for an item
-- B1: A bid requires a listing, a bidder, and an amount (unit)
-- B3: A listing has a list of bids (unit)
-- B4: The highest bidder when time expires on a listing is the winner (unit)
-- B5: A bid is required to be at least .50 more than the previous bid (integration)
-- B6: The first bid may be the same as the original price of a listing (integration)
+- The listing detail page will allow for creating a bid for the listing
+- A new bid requires a bid amount and a bidder account
+- A new bid must be at list 50 cents more than the current highest bid
+- Listing page will show the current highest bid amount
+- Provide a way to show the bid history for a listing
+- When the listing completes, the highest bidder is the winner
+- For completed listings, display the winner account
 
 ---
 # Review Requirements
-
----
-- The seller and buyer can each be reviewed by each other after a listing has closed
-- R1: A review consists of a description (required, max of 60 character) (integration)
-- R2: A review consists of a thumbs up or thumbs down (unit)
-- R3: A review has a timestamp of when the review was given (integration)
-- R4: A listing will track if buyer and seller were prompted to provide a review (integration)
+- On completed listings pages, provide the ability to set the rating for both seller and buyer
+- Rating includes a short description (50 characters) and thumbs up or down
+- Once the rating is specified for a seller or buyer it cannot be changed
+- On the account detail page display a read-only listing of reviews for the account (both buyer and seller)
