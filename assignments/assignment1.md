@@ -1,9 +1,14 @@
 ---
+title: Assignment #1
+layout: default
+---
+
 # Assignment #1
 ## sellit.com
-### sell it if you got it
+### Due Date: 2/27/2015
 
 ---
+
 # Introduction
 - Implement an auction system similar to eBay
 - Project will be completed in a series of 3 assignments
@@ -41,11 +46,6 @@
 - Selecting a listing from the list page will take user to a listing detail page where the listing details are displayed
 
 ---
-# Category Requirements
-- When creating a listing provide the option of putting the listing in a category
-- Categories are hierarchical (Electronics->Computers->Mac)
-- User can specify category through a dropdown (select) or typeahead control.  The hierarchy of the category selected must be evident to the user
-- Create a web app page that shows the complete category hierarchy
 
 # Bidding Requirements
 - The listing detail page will allow for creating a bid for the listing

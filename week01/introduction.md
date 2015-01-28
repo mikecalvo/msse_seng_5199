@@ -77,6 +77,7 @@ _I welcome comparisons and discussion especially from those with direct experien
 - In class code review: 10%
 - Evenly distributed throughout the course
 - Must turn in every assignment to pass
+- Options: solo or pair
 
 ---
 
@@ -86,14 +87,6 @@ _I welcome comparisons and discussion especially from those with direct experien
 - All requirements must be verified with passing tests
 - Must be submitted to me by midnight of the due date
   - Can be turned in one week late for reduction of one letter grade
-
----
-
-# Assignments
-1. Basic Grails Project Setup, GORM, Domain Model, Services
-2. Grails controllers, REST services, JSON
-3. Basic Angular Project Setup, Controllers
-4. Validation, Forms, Filters and Directives
 
 ---
 
@@ -110,6 +103,7 @@ _I welcome comparisons and discussion especially from those with direct experien
 ---
 
 # Getting Help
+
 - Your partner
 - http://stackoverflow.com
   - Your question has likely been answered here

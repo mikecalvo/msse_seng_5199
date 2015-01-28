@@ -1,45 +1,48 @@
 # Week 1
-- Topics: Introductions, Tools, Overview, Groovy (54)
+- Topics: Introductions, Tools, Overview, Groovy
 - Concepts: Dynamic Programming Languages
 - Reading: Grails Chapter 2
 
 ---
 # Week 2
-- Topics: Grails Basics, Testing, Spock (90)
+- Topics: Grails Basics, Testing, Spock
 - Concepts: Grails dependencies
 - Reading: Grails Chapter 1, 9, https://code.google.com/p/spock/wiki/SpockBasics
 
 ---
+
 # Week 3
-- Topics: Domain Data, GORM, Queries, NoSQL (83)
+- Topics: Domain Data, GORM, Queries, NoSQL
 - Concepts: ORM
 - Reading: Grails Chapter 3, 5, 16
 
 ---
+
 # Week 4
 
-- Topics: Web Basics HTTP Requests, Controllers, Views (120)
+- Topics: Web Basics HTTP Requests, Controllers, Views
 - Concepts: HTTP, HTML, Functional Testing, Geb
 - Reading: Grails Chapter 6, 8
 
 ---
-# Week 5
-- Topics: Data Binding, Url Mappings, Filters, Plugins (65)
-- Reading Grails Chapter 10, 7.2-7.6
 
-Assignment 1 Due
+# Week 5
+- Topics: Data Binding, Url Mappings, Filters, Plugins
+- Reading Grails Chapter 10, 7.2-7.6
 
 ---
 
 # Week 6
-- Topics: Security, Web Services, REST (69)
+- Topics: Security, Web Services, REST
 - Reading Grails Chapter 11, 12, http://grails.org/doc/latest/guide/security.html
+
+# Assignment 1 Due
 
 ---
 
 # Week 7
 
-- Topics: Services, Messaging, Scheduling (73)
+- Topics: Services, Messaging, Scheduling
 - Concepts: Transactions, Dependency Injection, Asynchronous Functionality
 - Reading: Grails Chapter 7.1, 14, 15
 
@@ -61,7 +64,8 @@ Assignment 1 Due
 
 - Topics: AngularJS Introduction, Concepts, Controllers
 - Reading: Grails Chapter 13
-Assignment 2 Due
+
+# Assignment 2 Due
 
 ---
 
@@ -87,4 +91,4 @@ Assignment 2 Due
 
 - Topics: Minification, Obfuscation, NodeJS, Grunt
 
-Assignment 3 Due
+# Assignment 3 Due
