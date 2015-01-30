@@ -154,7 +154,7 @@ slidenumbers: true
 ---
 
 # TestFor
-- Providesconvenient injections for controllers, services and domain classes
+- Provides convenient injections for controllers, services and domain classes
 - Example members added: @TestFor(SomeControllerClass)
   - controller - instance of the SomeControllerClass
   - params - a map of parameters sent to controller methods

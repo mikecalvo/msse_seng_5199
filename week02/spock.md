@@ -52,7 +52,7 @@ slidenumbers: true
   - Alias for setup is given:
 - Usually reserved for creating objects required by test
 
-```
+``` groovy
 setup:
 def stack = new Stack()
 def elem = 'push me'
@@ -65,7 +65,7 @@ def elem = 'push me'
 - Always appear together (when before then)
 - Multiple can appear in a feature method
 
-```
+``` groovy
 when:
 stack.push(value)
 
@@ -87,7 +87,7 @@ stack.size() == originalSize+1
 - Then blocks can also contain expectations regarding interactions between components
 - Typically used with mock objects
 
-```
+``` groovy
 when:
 publisher.fire('event')
 
@@ -110,7 +110,7 @@ then:
 # Cardinalities
 - Place expectations on the number of times an interaction happens:
 
-```
+``` groovy
 n * subscriber.receive(event)      // exactly n times
 (n.._) * subscriber.receive(event) // at least n times
 (_..n) * subscriber.receive(event) // at most n times
@@ -155,7 +155,7 @@ then:
 ---
 
 # Full Example
-```
+``` groovy
 class MySpec extends Specification {
 
   def 'simple test of something silly'() {
@@ -175,7 +175,8 @@ class MySpec extends Specification {
 
 # Testing Expected Exceptions
 - Use the thrown method with exception type in the then block
-```
+
+``` groovy
 def 'bad things happen'() {
   when:
   service.provide(null)
@@ -197,7 +198,8 @@ def 'bad things happen'() {
 ---
 
 # Data-driven Example
-```
+
+``` groovy
 @Unroll('#description')
 def 'supports count parameter'() {
   given:
@@ -220,6 +222,7 @@ def 'supports count parameter'() {
   'Ten'        | 10    | 10
   'Cap at ten' | 30    | 10
   }
+}
 ```
 
 ---
@@ -244,7 +247,7 @@ def 'supports count parameter'() {
 - Block labels can be given a descriptive text
 - The 'and' block provides some syntactic sugar to separate expected results
 
-```
+``` groovy
 given: 'an empty bank account'
 // ...
 when: 'the account is credited $10'

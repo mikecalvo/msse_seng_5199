@@ -57,7 +57,7 @@ slidenumbers: true
   - grails.project.fork
 - Must be set to false for both test and run to allow debugger to stop at breakpoints
 
-```
+``` groovy
 grails.project.fork = [
   test: false
   run: false
@@ -109,7 +109,8 @@ grails.project.fork = [
 ---
 
 # Example BootStrap
-```
+
+``` groovy
 class BootStrap
 def init = { ServletContext ctx ->
   environments {
@@ -123,7 +124,7 @@ def init = { ServletContext ctx ->
     }
   }
   ctx.setAttribute("foo", "bar")
-  }
+}
 ```
 
 ---
@@ -137,7 +138,7 @@ def init = { ServletContext ctx ->
 
 # Default URLMappings.groovy
 
-```
+``` groovy
 class UrlMappings {
 
   static mappings = {
