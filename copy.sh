@@ -26,7 +26,8 @@ find week* -name "*.md" -print | sort -nr | while read -r i; do
 
   DEST="${SITE_BASE}/notes/${NAME}/index.md"
   echo "Copying ${i} to ${DEST}"
-  cp "${i}" "${DEST}"
+  cat "slide_header.md" > "${DEST}"
+  sed '1,2d' ${i} >> "${DEST}"
 done
 # while read -r f; do
 #  echo "$f"
