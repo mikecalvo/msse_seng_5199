@@ -1,6 +1,6 @@
 footer: © Citronella Software Ltd 2015
 slidenumbers: true
-# HTML, CSS, JavaScript
+# HTML and CSS
 ## Mike Calvo
 ## mike@citronellasoftware.com
 
@@ -219,8 +219,136 @@ div: {
 
 ---
 
+# Adding CSS Reference To HTML
+- Put a reference to stylesheet in HEAD element:
+`<link rel="stylesheet" type="text/css" href="path/to/file">`
+- Can be relative file or http reference
+
+---
+
+# Style Elements
+- Can appear in HEAD or BODY
+- Syntax is the same as CSS files
+`<style>div { color: red; }</style>`
+
+---
+
 # Cascade?
 - Styles applied in priority order
 - Least-specific to most-specific
 - Furthest from element to closest
-  - Browser: External Stylesheet : Internal Style : Inline
+- Browser: External Stylesheet : Internal Style : Inline
+- Styles are inherited by document structure
+
+---
+
+# Debugging Styles
+- Browser Developer Tools
+- Inspect Element
+- View Style/CSS Cascade
+- See which style is applied and from where
+
+---
+
+# Force a Style
+- place !important after property to insure it's honored
+
+``` css
+div {
+  color: red !important;
+}
+```
+
+---
+
+# What Can I Style
+- Layout: block, inline, hidden, collapsed, alignment
+- Spacing: margin, padding
+- Text: color, size, font, weight
+- Backgrounds: color, images
+- Borders
+- Positioning
+
+---
+
+# CSS Positioning
+- Control how an element is displayed on the screen
+- Control how other elements behave because of the existence of the element
+- Normal flow
+  - Inline (span)
+  - Block (p, div, table, ul)
+  - Controlled by 'display' property
+
+---
+# CSS Position Property
+- static - 'normal position'
+- relative - adjust slightly from normal (top, bottom, left, right)
+- absolute - put it exactly here (contrained by relative parent)
+- float - push the element as far as possible right or left
+- clear - reset the float behavior of my siblings for me
+
+---
+
+# CSS Units
+- Some properties require a unit to be specified
+- px: pixel
+- em: size of 'm' in current font
+- %
+- pt: 1/72 of 1 inch
+- 0 values do not require units
+
+---
+# Shorthand Properties
+- Some groups of properties can be set with a single space seperated property
+
+``` css
+div {
+  border: 1px black solid; /* sets 12 properties */
+  padding: 5px; /* sets top right, bottom, left */
+  margin: 1px 5px 1px 0; /* top, right, bottom, left */
+  background: white url(foo.gif) no-repeat top right; /* sets 4 properties */
+  font: italic bold .8em 1.2 Arial;
+}
+```
+
+---
+
+# CSS3
+- Major release for modern, interactive web apps
+- Color support: HSL and RGBA
+- Text effects: show, overlap, word-wrap
+- Web Fonts
+- Backgrounds - multiple backgrounds
+- Transitions and animations
+- Media Queries
+
+---
+
+# Media Queries
+- Control what media or devices a style sheet block applies to
+- Media can be print, tv, screen, speech or all
+- Media features that can be specified include
+  - width and height
+  - orientation
+  - resolution
+  - aspect-ratio
+
+---
+
+# Media Query Example
+
+``` css
+@media (max-width: 600px) {
+  .sidebar {
+    display: none;
+  }
+}
+
+@media (min-width: 700px) and (orientation: landscape) {
+
+}
+
+@media screen and (min-aspect-ratio: 1/1) {
+
+}
+```
