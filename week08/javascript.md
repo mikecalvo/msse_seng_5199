@@ -56,6 +56,13 @@ console.log('sum = '+sum);
 
 ---
 # JavaScript Functions Syntax
+- Functions are created with the 'function' literal
+- Functions can be named - aids with debugging/stacks
+- Functions can be assigned to a variable
+- Functions can be passed as arguments (closures)
+
+---
+# Example Function Syntax
 
 ``` javascript
 function print(parameter) {
@@ -164,13 +171,140 @@ delete object.type
 ```
 
 ---
+# Method Invocation Model
+- Calling a function stored on an object
+- Inside function 'this' refers to the instance on whom the method is called
+
+``` javascript
+var obj = {
+  name: 'Billy',
+  go: function() {
+    this.name += ' going... ';
+  }
+};
+```
+
+---
+# Plain Function Invocation
+- Calling a function that is assigned to a variable or simply defined
+- Global object is bound to this (boo!)
+
+``` javascript
+var obj = {
+  go: function() {
+    var that  = this;
+
+    var helper = function() {
+      that.value = 'nice hack!';
+    }
+
+    helper();
+  }
+};
+```
+
+---
+# Constructor Invocation
+- Calling a function with the 'new' keyword
+- Not the same as calling a constructor in classic OO languages
+- Returns a new Object which is a clone of the function's prototype
+- Convention: constructor functions are Capitalized
+
+---
+# Example Constructor
+
+``` javascript
+var Person = function(name) {
+  this.name = name;
+}
+Person.prototype.get_name = function() { return this.name; };
+
+new Person('John').get_name();
+
+```
+
+---
+# Apply Invocation
+- Dynamically invoke a function
+- Supply the arguments
+- Supply the 'this'
+
+---
+# Apply Example
+
+``` javascript
+var add = function(a, b) {
+  return a + b;
+};
+
+add.apply(null, [5, 6]);
+
+```
+
+---
+# Arguments
+- Javascript has flexible argument rules
+- Callers of a function don't have to match the argument parameters exactly
+- Non-supplied arguments are undefined
+- Extra argumnents are ignored
+- All fucntions can access the complete set of arguments via the arguments function which is an array
+
+---
+# Arguments Example
+
+``` javascript
+var addAll = function() {
+  var sum = 0;
+  for (var i = 0; i < arguments.length; i++) {
+    sum += arguments[i];
+  }
+
+  return sum;
+}
+
+addAll(2, 5, 6, 7, 10, 22);
+
+```
+---
+# Augmenting Types
+- Prototypes - even of system types - can be changed at run time
+- String is missing the trim function...
+
+``` javascript
+String.prototype['trim'] = function() {
+  // use a regular expression to remove whitespace
+  return this.replace(/^\s+|\s+$/g, '');
+};
+"   hello    ".trim();
+```
+
+---
 # Global Scope
 - By default, Javascript puts variables in global scope
 - Need tricks to avoid this:
 - Trick 1: put all your variables within a single global variable
 - Trick 2: declare variables within functions
+
 ---
 
+# Function To Protect Scope
+
+``` javascript
+var object = (function() {
+  var value = 5;  // Shhhh - this is private
+
+  return {
+    increment: function(amount) { value += 5; },
+    getValue: function() { return value; }
+  }
+})();
+
+object.increment(10);
+object.getValue();
+object.value; // !!! Undefined !!!
+```
+
+---
 # Excellent JavaScript Books
 - 'JavaScript: The Good Parts' by Crockford
 - 'Eloquent JavaScript' by Haverbeke
