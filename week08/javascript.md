@@ -305,6 +305,22 @@ object.value; // !!! Undefined !!!
 ```
 
 ---
+# Callbacks
+- Common pattern in JavaScript
+- Functions that run asynchronously get a function parameter
+- This parameter is a callback
+- When the asychronous execution completes, the callback is called
+
+---
+# Callback Example
+
+``` javascript
+sendMyRequest(url, function(status) {
+  console.log('Request completed.  Status: '+status);
+});
+```
+
+---
 # Excellent JavaScript Books
 - 'JavaScript: The Good Parts' by Crockford
 - 'Eloquent JavaScript' by Haverbeke
