@@ -1,6 +1,7 @@
 footer: © Citronella Software Ltd 2015
 slidenumbers: true
-# HTML and CSS
+
+# HTML and CSS Overview
 ## Mike Calvo
 ## mike@citronellasoftware.com
 

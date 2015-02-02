@@ -341,6 +341,33 @@ parse_number.test('192.168.1.1'); // false
 ```
 
 ---
+# JavaScript in HTML
+- Javascript code can exist within `<script>` tags
+- Externally defined Javascript files can be included using `src` attribute
+- Script tags can live in the head and the body
+- Script tags are executed in order within the page
+- JavaScript code has accss to the HTML document (DOM)
+
+---
+# Example HTML Scripts
+
+``` html
+<!DOCTYPE html>
+<html><head>
+  <script src="angular.js"></script>
+  <script>
+    var app = {};
+  </script>
+  </head>
+  <body>
+    <script>
+      document.body.innerHTML += '<div>hi</div>';
+    </script>
+  </body>
+</html>
+```
+
+---
 # Excellent JavaScript Books
 - 'JavaScript: The Good Parts' by Crockford
 - 'Eloquent JavaScript' by Haverbeke
