@@ -51,20 +51,21 @@
 # Week 8
 
 - Topics: Introduction to HTML, CSS, JavaScript
+- Reading: Angular Chapter 5
 
 ---
 
 # Week 9
 
-- Topics: jQuery, underscore, Mobile views, Twitter Bootstrap
+- Topics: NodeJS, Bower, Twitter Bootstrap, Angular Introduction
+- Reading: Grails Chapter 13, Angular Chapter 2, 3, 6
 
 ---
 
 # Week 10
 
-- Topics: AngularJS Introduction, Concepts, Controllers
-- Reading: Grails Chapter 13
-
+- Topics: Controllers, Scope
+- Reading: Angular Chapter 13
 # Assignment 2 Due
 
 ---
@@ -72,18 +73,21 @@
 # Week 11
 
 - Topics: AngularJS: Routers, Services, Resources
+- Reading: Angular Chapter 7, 18, 21
 
 ---
 
 # Week 12
 
 - Topics: AngularJS: Resources, Directives, Filters, Validation
+- Reading: Angular Chapter 10
 
 ---
 
 # Week 13
 
 - Topics: Functional and E2E Testing: Jasmine, Protractor
+- Reading: Angular Chapter 25
 
 ---
 
