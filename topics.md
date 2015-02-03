@@ -58,14 +58,14 @@
 # Week 9
 
 - Topics: NodeJS, Bower, Twitter Bootstrap, Angular Introduction
-- Reading: Grails Chapter 13, Angular Chapter 2, 3, 6
+- Reading: Grails Chapter 13, Angular Chapter 1, 2, 3
 
 ---
 
 # Week 10
 
 - Topics: Controllers, Scope
-- Reading: Angular Chapter 13
+- Reading: Angular Chapter 6, 13
 # Assignment 2 Due
 
 ---
