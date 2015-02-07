@@ -139,7 +139,7 @@ n * subscriber.receive(event)      // exactly n times
 ---
 
 # Mock Example
-```
+``` groovy
 setup:
 def event = new Event()
 def subscriber = Mock(Subscriber)

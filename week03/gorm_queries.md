@@ -15,7 +15,8 @@ slidenumbers: true
 ---
 
 # Example WhereQuery
-```
+
+``` groovy
 // find all users whose email is mike@*
 User.where { email =~ "mike@%"}.list()
 ```
@@ -31,7 +32,8 @@ User.where { email =~ "mike@%"}.list()
 ---
 
 # Examples Queries
-```
+
+``` groovy
 // Find all users who's email starts with
 //    case insensitive joe and were created after a date
 User.where { email ==~ 'joe%' && dateCreated > fromDate }.list()
@@ -77,7 +79,7 @@ Post.where { post.user.email == userEmail }
 # Viewing SQL Query Parameters
 - To view all values passed to database, including query parameters dial up the logging on these Hibernate classes in your Config.groovy:
 
-```
+``` groovy
 log4j = {
   // Other logging configured here...
 
@@ -90,7 +92,7 @@ log4j = {
 
 # Easy Counting and Listing
 - GORM provides static count() and list() methods on each domain class
-- list() performs a simplequery operations with limited control on results
+- list() performs a simple query operations with limited control on results
   - max, order, offset, fetch, sort are all supported
 - count() returns a count of all items in the corresponding table
 
@@ -116,7 +118,8 @@ log4j = {
 ---
 
 # Example Criteria Query
-```
+
+``` groovy
 User.withCriteria {
   and {
     ilike 'email', '%mike%'
@@ -132,7 +135,7 @@ User.withCriteria {
 # Referencing Related Properties
 - Create a block with the related field
 
-```
+``` groovy
 // Find all songs who's artist is U2
 Song.withCriteria {
   artist { eq 'name', 'U2' }
@@ -151,7 +154,8 @@ Song.withCriteria {
 
 # Example Projection
 - Find a count of songs by artist name
-```
+
+``` groovy
 Song.withCriteria {
   createAlias 'artist', 'a'  // this lets me reference artist in projection
 
@@ -175,7 +179,8 @@ Song.withCriteria {
 ---
 
 # Example HQL Statements
-```
+
+``` groovy
 // Find all users with email that contains mike
 // Parameters can be positional
 User.findAll('from User u where user.email like ?', ['%mike%'])
@@ -187,6 +192,8 @@ User.findAll('from User u where user.email like :n', [n: '%mike%'])
 User.executeUpdate('update User u set u.enabled=false '+
   'where u.email like ?', ['%mike%'])
 ```
+
+---
 
 # Query Recommendations
 - Use where queries when possible (easiest to understand)

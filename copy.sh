@@ -1,6 +1,14 @@
 #!/bin/bash
 
 SITE_BASE=../mikecalvo.github.io/msse
+
+if [[ ! -d "${SITE_BASE}/topics" ]] ; then
+  echo 'Creating dir ${SITE_BASE}/topics'
+  mkdir "${SITE_BASE}/topics"
+fi
+
+cp topics.md ${SITE_BASE}/topics/index.md
+
 if [[ ! -d "${SITE_BASE}/assignments" ]] ; then
   echo 'Creating dir ${SITE_BASE}/assignments/'
   mkdir "${SITE_BASE}/assignments"
@@ -29,6 +37,3 @@ find week* -name "*.md" -print | sort -nr | while read -r i; do
   cat "slide_header.md" > "${DEST}"
   sed '1,2d' ${i} >> "${DEST}"
 done
-# while read -r f; do
-#  echo "$f"
-# done < <(find "week*" -name "*.md" -printf "%k KB %p\n" | sort -nr)
