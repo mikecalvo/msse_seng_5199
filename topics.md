@@ -66,6 +66,7 @@
 
 - Topics: Controllers, Scope, Routing
 - Reading: Angular Chapter 6, 7, 13
+
 # Assignment 2 Due
 
 ---

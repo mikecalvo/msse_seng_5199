@@ -7,7 +7,9 @@ if [[ ! -d "${SITE_BASE}/topics" ]] ; then
   mkdir "${SITE_BASE}/topics"
 fi
 
-cp topics.md ${SITE_BASE}/topics/index.md
+DEST="${SITE_BASE}/topics/index.md"
+cat "slide_header.md" > "${DEST}"
+cat topics.md >> "${DEST}"
 
 if [[ ! -d "${SITE_BASE}/assignments" ]] ; then
   echo 'Creating dir ${SITE_BASE}/assignments/'
