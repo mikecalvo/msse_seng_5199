@@ -12,10 +12,15 @@ slidenumbers: true
 
 ---
 # Expressions
+- {{ }}
 
 ---
 # Directives
+- ng-repeat
+- ng-model
 
+---
+# HTTP
 
 ---
 # Binding
@@ -35,7 +40,11 @@ slidenumbers: true
 # App Routes
 
 ---
-# HTTP
+# Sub views
+
+---
+# Angular Plugins/Dependencies
+- ui-router
 
 ---
 # Modular Components

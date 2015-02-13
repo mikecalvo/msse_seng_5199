@@ -112,7 +112,7 @@ slidenumbers: true
 ---
 # Asset Pipleline Tags:
 
-``` gsp
+``` html
 <head>
   <asset:javascript src="application.js" />
   <asset:stylesheet href="application.css" />
