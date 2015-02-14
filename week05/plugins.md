@@ -27,7 +27,7 @@ slidenumbers: true
 ---
 # Default External Plugins
 
-```
+``` groovy
 plugins {
   // plugins for the build system only
   build ":tomcat:7.0.55"
@@ -48,10 +48,8 @@ plugins {
 # Finding Plugins
 - Grails Central Plugin Repository
   `grails list-plugins`
-
-- http://grails.org/plugins
-  - More complete list
-- Stackoverflow.com also a good source
+- [http://grails.org/plugins](http://grails.org/plugins)
+- [http://stackoverflow.com](http://stackoverflow.com)
 
 ---
 # Installing Plugins
@@ -116,11 +114,11 @@ plugins {
 # @CacheEvict
 - Annotate method to have the cache remove an object when the method is called
 - allEntries can be optionally specified to blast entire cache:
-  `@CacheEvict('cache', allEntries=true)`
+  - `@CacheEvict('cache', allEntries=true)`
 
 ---
 # Example Controller
-```
+``` groovy
 class AristController {
 
   @Cacheable('popularArtists')
@@ -144,7 +142,7 @@ class AristController {
 - Cache plugin also adds the grailsCacheManager bean for injecting
 - Programmatically evict, add and clear the cache
 
-```
+``` groovy
 Cache c = grailsCacheManager.getCache('states')
 c.evict('WI')
 c.add('MI', value)
@@ -169,7 +167,7 @@ c.clear()
 
 ---
 # Example Ehcache Config.groovy
-```
+``` groovy
 grails.cache.config = {
   defaultCache {
     maxElementsInMemory 1000
@@ -211,7 +209,7 @@ grails.cache.config = {
 ---
 # Example GrailsPlugin.Groovy
 
-```
+``` groovy
 class CoolGrailsPlugin {
   def version = "0.1"
   def grailsVersion = "2.4 > *"
@@ -237,7 +235,6 @@ class CoolGrailsPlugin {
 1. Install it
   - Run in plugin project
     `grails maven install`
-
 1. Reference it directly
   - Add in referencing project's BuildConfig.groovy:
     `grails.plugin.location.cool = '../cool'`
@@ -248,7 +245,7 @@ class CoolGrailsPlugin {
   - Central repository
   - Local repository
 - Install the Release Plugin
-  ```grails publish-plugin```
+  - `grails publish-plugin`
 
 ---
 # Plugin Summary

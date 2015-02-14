@@ -135,11 +135,11 @@ slidenumbers: true
 # JSON Object Format
 - String value mapping inside curly braces
 
-```
+``` json
 {
   'name': 'Mike',
   'age': 43,
-  'nerd': true
+  'nerd': true,
   'address': {
     'country': 'USA'
   }
@@ -150,7 +150,7 @@ slidenumbers: true
 # JSON List format
 - Comma-separated values inside square brackets
 
-```
+``` json
 [ 1, 2, 3, 'a', false]
 
 [{'name': 'Mike'}, {'name': 'Lars'}]
@@ -177,7 +177,7 @@ slidenumbers: true
 - Creates implicit controller responding to REST requests
 - Actions mapped to the standard REST HTTP methods
 
-```
+``` groovy
 @Resource(uri='/posts')
 class Post {
 
@@ -227,7 +227,7 @@ class Post {
 # Registering a JSON Marshaller
 - Code can be tied in via Bootstrap or a custom Spring bean
 
-```
+``` groovy
 JSON.registerObjectMarshaller(Song) { Song s ->
   return [ id: s.id, title: s.title, artist: s.artist.name ]
 }
@@ -263,7 +263,7 @@ JSON.registerObjectMarshaller(Song) { Song s ->
 # Protect Access to Proper HTTP Method
 - In custom controller:
 
-```
+``` groovy
 static allowedMethods = [save: "POST", update: "PUT", patch: "PATCH", delete: "DELETE"]
 ```
 
@@ -300,7 +300,7 @@ static allowedMethods = [save: "POST", update: "PUT", patch: "PATCH", delete: "D
 ---
 # Register Custom Marshalling Example
 
-```
+``` groovy
 JSON.createNamedConfig('v1') { cfg ->
   cfg.registerObjectMarshaller(Post) { Post p ->
     return { message: p.content, user: p.user.loginId }
@@ -319,7 +319,7 @@ JSON.createNamedConfig('v2') { cfg ->
 ---
 # Choose Marshaller Example
 
-```
+``` groovy
 class PostController {
   def index(String v) {
     assert !v || v == '1' || v == '2'
