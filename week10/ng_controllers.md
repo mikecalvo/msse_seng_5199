@@ -243,6 +243,66 @@ $scope.savePlay = function() {
 </div>
 ```
 
+---
+# Creating Dynamic HTML Attributes
+- If your element id requires a dynamic value, use ng-id
+- If your class requires a dynamic value (dynamically styled) use ng-class
+
+``` html
+<tr ng-repeat="artist in artists">
+  <td ng-id="artist-name-{{ artist.id }}"> {{ artist.name }} </td>
+  <td ng-class="{'featured': isFeatured(artist)}"> {{ artist.status }}</td>
+</tr>
+```
+
+---
+# Select Control
+- Angular provides support for the select/dropdown control
+- ng-options directive used to populate the options
+- Values can be objects
+  - Different properties can be used for display labels and selected values
+- Controller generally populates the list that backs the select
+
+---
+# Example ng-options
+
+``` html
+<select ng-options="artist.id as artist.name for artist in artists" ng-model="selected">
+  <option value="">Pick One</option>
+</select>
+```
+
+``` javascript
+angular.module('app').controller('songController', function($scope) {
+  $scope.selected = undefined;
+  $scope.artists = ['U2', 'The Smiths', 'The Cure', 'Stereolab'];
+});
+
+```
+
+---
+# Watching Scope
+- Controllers can monitor scope state changes
+- $scope.$watch('value', callback)
+  - callback called any time the $scope.value changes
+- $scope.$watchCollection('collection', callback)
+  - callback called any time something added or removed
+
+---
+# Watch Scope Example
+
+``` javascript
+$scope.$watch('songStyle', function(style) {
+  if (style === 'Classical') {
+    $scope.song.composer = {};
+  } else if (style == 'Rock') {
+    $scope.song.explicitLyrics = false;
+  }
+});
+```
+
+---
+
 # Angular Opinions
 - Controllers and views have specific functions
 - They should be used for specific things and only those specific things
@@ -271,59 +331,7 @@ $scope.savePlay = function() {
 - Contain any logic that alters the model
 
 ---
-# Dependencies
-
----
-# Watching Scope
-- Controllers can monitor scope state changes
-- $scope.$watch('value', callback)
-  - callback called any time the $scope.value changes
-- $scope.$watchCollection('collection', callback)
-  - callback called any time something added or removed
-
----
-# Common Core Directives
-- ng-class
-- ng-id
-- ng-repeat (filtering and sorting)
-
----
-# App Routes
-
----
-# Sub views
-
----
-# Angular Plugins/Dependencies
-- ui-router
-
----
-# Modular Components
-- Recall creating an app came from the following call that defines a module
-
-``` javascript
-angular.module('app', [ ])
-```
-
-- The second argument is the list of modules the new module depends on
-- You can break up your functionality into libraries of modules that can be reused between applications
-- Third-party Angular plugins/modules work this way
-
----
-# Example Module: Angular UI Bootstrap
-- Twitter Bootstrap provides a collection of rich web UI controls
-- The Angular UI module makes these available in an Angular friendly way:
-  - Directives
-  - Controllers
-
----
-# Adding Angular UI Bootstrap To Grails Project
-1. Use bower/grunt to install bootstrap and angular-ui
-1. Include Bootstrap CSS and JS files in assets
-1. Include Angular UI files in assets
-1. Add the module reference to your app module definition
-
----
-# Install Latest Version of Bootstrap and Angular UI
-- From your root directory
-`./node_modules/.bin/bower install bootstrap angular-bootstrap --save`
+# Summary
+- Controllers provide data and functionality to views
+- Views are HTML-based UI with special angular attributes called directives
+- The Views and Controllers share data via the scope
