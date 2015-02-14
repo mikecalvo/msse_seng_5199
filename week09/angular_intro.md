@@ -226,3 +226,9 @@ app.controller('welcomeController', function($scope) {
 </body>
 </html>
 ```
+
+---
+# Summary
+- Angular is an opinionated web client framework
+- Controllers, Directives, Resources, Services and Filters are major components
+- Grails assets pipeline allows for easy inclusion of JavaScript and CSS files
