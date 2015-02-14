@@ -55,7 +55,7 @@ slidenumbers: true
 ---
 # Example Filter
 
-```
+``` groovy
 class AppFilters {
   def filters = {
     loggingFilter(controller:'*', action:'*') {
@@ -81,7 +81,7 @@ Filter Dependencies
 - Filters can be applied in order
   - Add the 'dependsOn' field to mark filters to be applied first
 
-```
+``` groovy
 class SecurityFilter {
   def dependsOn = [AppFilter]
 
