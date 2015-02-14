@@ -243,11 +243,49 @@ $scope.savePlay = function() {
 </div>
 ```
 
+# Angular Opinions
+- Controllers and views have specific functions
+- They should be used for specific things and only those specific things
+- What are they?
+
+---
+# Controllers Should
+- Initialize the scope
+- Contain functionality required by the view to present the model
+- Contain functionality to update the scope based on user interaction
+
+---
+# Controllers Should Not
+- Manipulate the DOM
+- Persist data
+- Manipulate data outside the scope
+
+---
+# Views Should
+- Contain markup required to present data to the user
+- Contain minimal amounts of logic relating to the presentation of the data
+
+---
+# Views Should Not
+- Contain any complex logic
+- Contain any logic that alters the model
+
 ---
 # Dependencies
 
 ---
 # Watching Scope
+- Controllers can monitor scope state changes
+- $scope.$watch('value', callback)
+  - callback called any time the $scope.value changes
+- $scope.$watchCollection('collection', callback)
+  - callback called any time something added or removed
+
+---
+# Common Core Directives
+- ng-class
+- ng-id
+- ng-repeat (filtering and sorting)
 
 ---
 # App Routes
@@ -261,3 +299,31 @@ $scope.savePlay = function() {
 
 ---
 # Modular Components
+- Recall creating an app came from the following call that defines a module
+
+``` javascript
+angular.module('app', [ ])
+```
+
+- The second argument is the list of modules the new module depends on
+- You can break up your functionality into libraries of modules that can be reused between applications
+- Third-party Angular plugins/modules work this way
+
+---
+# Example Module: Angular UI Bootstrap
+- Twitter Bootstrap provides a collection of rich web UI controls
+- The Angular UI module makes these available in an Angular friendly way:
+  - Directives
+  - Controllers
+
+---
+# Adding Angular UI Bootstrap To Grails Project
+1. Use bower/grunt to install bootstrap and angular-ui
+1. Include Bootstrap CSS and JS files in assets
+1. Include Angular UI files in assets
+1. Add the module reference to your app module definition
+
+---
+# Install Latest Version of Bootstrap and Angular UI
+- From your root directory
+`./node_modules/.bin/bower install bootstrap angular-bootstrap --save`

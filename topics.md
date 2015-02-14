@@ -50,8 +50,8 @@
 
 # Week 8
 
-- Topics: Introduction to HTML, CSS, JavaScript
-- Reading: Angular Chapter 5
+- Topics: Introduction to HTML, CSS, JavaScript, Bootstrap
+- Reading: Angular Chapter 4, 5
 
 ---
 
@@ -64,7 +64,7 @@
 
 # Week 10
 
-- Topics: Twitter Bootstrap, Controllers, Scope, Routing
+- Topics: Controllers, Scope, Routing
 - Reading: Angular Chapter 6, 7, 13
 
 # Assignment 2 Due
