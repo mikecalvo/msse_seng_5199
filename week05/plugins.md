@@ -13,7 +13,6 @@ slidenumbers: true
   - UI libraries
   - Common functionality
 - Parts of base Grails platform are plugins
-  -GORM
 
 ---
 # Enhanced Functionality
@@ -73,6 +72,7 @@ plugins {
   `$HOME/.grails/<grailsVersion>/projects/<project>/plugins`
 - Copied to target folder during build
 
+---
 # Plugin Recommendations
 - Pick plugins that are actively worked on
   - Many commits
