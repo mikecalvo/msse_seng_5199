@@ -33,13 +33,12 @@ slidenumbers: true
 - Command objects allow constrained form submission of data
 
 ---
-# Grails Safe Data Access
-- Safer:
-  - Dynamic finders
-  - Where queries
-  - Criteria API
-  - Static HQL with parameters
-- Unsafer:
+# Grails Safer Data Access
+- Dynamic finders
+- Where queries
+- Criteria API
+- Static HQL with parameters
+- Less Safe:
   - Constructing HQL/SQL via concatenation
 
 ---
@@ -74,9 +73,9 @@ slidenumbers: true
 ---
 # HTML Escaping
 - Code in HTML must exist within a <script> element
-- Replace every <, > character with the HTML escaped equivalent
-  - &lt;
-  - &gt;
+- Replace every `<`, `>` character with the HTML escaped equivalent
+  - `&lt;`
+  - `&gt;`
 - Code will now safely show up as a strange comment
 - Grails escapes all dynamic content in GSP pages
 
@@ -101,7 +100,7 @@ slidenumbers: true
 - SSL (Secure Sockets Layer) is the standard approach to encrypt HTTP traffic via the HTTPS protocol
 - Apps with sensitive data should be deployed using HTTPS
 - This requires generating an SSL cert which needs to be installed in your web server
-- Until you do this, browsers will warn visitors when sites are accessed
+- Until you do this, browsers will warn visitors
 
 ---
 # Access Control
