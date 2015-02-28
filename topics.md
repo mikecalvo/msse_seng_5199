@@ -65,7 +65,7 @@
 # Week 10
 
 - Topics: Controllers, Scope, Routing
-- Reading: Angular Chapter 6, 7, 13
+- Reading: Angular Chapter 6, 13, 22
 
 # Assignment 2 Due
 
