@@ -34,7 +34,7 @@
 
 # Week 6
 - Topics: Security, Web Services, REST
-- Reading Grails Chapter 11, 12, [http://grails.org/doc/latest/guide/security.html](http://grails.org/doc/latest/guide/security.html)
+- Reading Grails Chapter 11 [http://grails.org/doc/latest/guide/security.html](http://grails.org/doc/latest/guide/security.html)
 
 # Assignment 1 Due
 
@@ -42,9 +42,9 @@
 
 # Week 7
 
-- Topics: Services, Messaging, Scheduling
+- Topics: REST, Services
 - Concepts: Transactions, Dependency Injection, Asynchronous Functionality
-- Reading: Grails Chapter 7.1, 14, 15
+- Reading: Grails Chapter 7.1, 12, 14
 
 ---
 
@@ -94,6 +94,7 @@
 
 # Week 14
 
-- Topics: Minification, Obfuscation, NodeJS, Grunt
+- Topics: Messaging and Scheduling
+- Reading: Grails Chapter 15
 
 # Assignment 3 Due
