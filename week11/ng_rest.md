@@ -164,13 +164,35 @@ $scope.song.$promise.then(function(result) {
 ```
 
 ---
-# Additional Resource Methods
+# Additional Resource Actions
 - Custom resource methods can be added when creating the resource:
 
 ``` javascript
 Songs = $resource('songs/:id', {}, {
-  'create': {method: 'PUT'}
+  create: {method: 'PUT'}
   });
+```
+
+---
+# Resource Action Configuration
+- method: HTTP method
+- params: segment variables for call
+- url: override default url
+- isArray: by default resources assume single values
+
+---
+# Custom Action Examples
+
+``` javascript
+$resource("songs/:id", {}, {
+  create: {method: "POST"},
+  save: {method: "PUT"},
+  find: {
+    method: "GET",
+    isArray: true,
+    url:"songs/?sort=:sort&offset=:offset",
+    params:{offset:0}},
+});
 ```
 
 ---
@@ -186,7 +208,12 @@ $scope.save = function() {
 }
 ```
 ---
+# Views Backed by Resources
+- Most built-in directives know how to properly respond to resources
+- For example:
+  - ng-repeat will automatically refresh itself when the resource is resolved
 
+---
 # Resource Conventions
 - Define a resource once and assign it to an upper case variable name
 - Gives it a calling semantic similar to GORM domain class
