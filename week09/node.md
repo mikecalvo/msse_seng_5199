@@ -271,7 +271,6 @@ module.exports = function (grunt) {
 ``` groovy
 eventCompileStart = { kind ->
   executeNpmInstall()
-  executeBowerInstall()
   executeGruntTasks()
 }
 
@@ -288,22 +287,6 @@ private void executeNpmInstall() {
   proc.waitFor()
   if (proc.exitValue() != 0) {
     println "Error installing npm dependencies"
-    println "Output: ${proc.in.text}"
-  }
-}
-```
-
----
-# _Events.groovy (continued)
-
-``` groovy
-private void executeBowerInstall() {
-  def bowerInstall = "node_modules/.bin/bower install"
-  println "| bower install..."
-  def proc = bowerInstall.execute()
-  proc.waitFor()
-  if (proc.exitValue() != 0) {
-    println "Error installing bower dependencies"
     println "Output: ${proc.in.text}"
   }
 }
