@@ -81,7 +81,7 @@
 # Week 12
 
 - Topics: Angular Validation and Services
-- Reading: Angular Chapter 11 - 12
+- Reading: Angular Chapter 12, 18
 
 ---
 
