@@ -27,7 +27,9 @@ slidenumbers: true
 # Bootstrap Page Requirements
 - Include jQuery library before Bootstrap
 - Set the viewport:
-`<meta name="viewport" content="width=device-width, initial-scale=1">`
+```html
+<meta name="viewport" content="width=device-width, initial-scale=1">
+```
 - Include the bootstrap css AND js files (from bower_components)
 
 ---
@@ -35,7 +37,9 @@ slidenumbers: true
 # Mobile Friendly
 - The viewport ensures property rendering and touch zooming
 - Disabling zooming can make the site feel more like an app:
-`<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">`
+```html
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+```
 
 ---
 
@@ -44,8 +48,10 @@ slidenumbers: true
 - Scales when the device/viewport size grows and shrinks
   - Columns wrap to rows at the appropriate time
 - Grid system requires a container
-  `<div class=container>...</div>`
-  `<div class="container-fluid">...</div>`
+  ```html
+  <div class=container>...</div>
+  <div class="container-fluid">...</div>
+```
 
 ---
 
