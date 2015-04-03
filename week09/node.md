@@ -118,7 +118,7 @@ console.log('Server running at http://127.0.0.1:8124/');
 }
 
 ```
-
+---
 # Setup Grails Project with Node
 1. In root project folder run:
   `npm init -f`
@@ -139,7 +139,7 @@ console.log('Server running at http://127.0.0.1:8124/');
 ---
 
 # Use Bower
-``` shell
+``` bash
 bower install jquery
 bower install git://github.com/user/package.git
 bower install bootstrap
