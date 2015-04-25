@@ -93,7 +93,7 @@ angular.module('app').config(function($httpProvider) {
     }
     return data;
   })
-})
+});
 ```
 
 ---
