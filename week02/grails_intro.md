@@ -92,8 +92,9 @@ slidenumbers: true
 ---
 
 # Installing Grails
-- GVM
-  `gvm install grails`
+- sdkman:
+  `curl -s get.sdkman.io | bash`
+  `sdk install grails`
 - Download archive and extract
   - http://grails.org
   - Add grails directory/bin to your path
@@ -201,7 +202,7 @@ git checkout -t origin/master
 ---
 
 # Scaffolding
-- Dyamically created CRUD actions and views for a controller
+- Dynamically created CRUD actions and views for a controller
 - Good starting point for a basic set of app functionality
 
 ``` groovy

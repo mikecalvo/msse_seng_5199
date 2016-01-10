@@ -1,4 +1,4 @@
-footer: © Citronella Software Ltd 2015
+footer: © Citronella Software Ltd 2016
 slidenumbers: true
 # Course Intro
 ## Mike Calvo
@@ -9,8 +9,7 @@ slidenumbers: true
 # About Me
 - 1999 MSSE Graduate
 -- Instructor since 2000
-- Independent Software Consultant
-- CTO Mind Gamez LLC
+- Engineering Manager @ Target
 
 ---
 
@@ -73,8 +72,7 @@ _I welcome comparisons and discussion especially from those with direct experien
 ---
 
 # Grading
-- 3 programming assignments: 30% each
-- In class code review: 10%
+- 4 programming assignments: 25% each
 - Evenly distributed throughout the course
 - Must turn in every assignment to pass
 - Options: solo or pair
@@ -93,7 +91,7 @@ _I welcome comparisons and discussion especially from those with direct experien
 # Recommendations
 - IntelliJ IDEA
 -- Get an [academic license](https://www.jetbrains.com/estore/students/)
-- Develop on *nix
+- Develop on Unix
 -- Mac
 -- Cygwin
 -- Linux

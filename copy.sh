@@ -16,7 +16,7 @@ if [[ ! -d "${SITE_BASE}/assignments" ]] ; then
   mkdir "${SITE_BASE}/assignments"
 fi
 
-for i in 1 2 3
+for i in 1 2 3 4
 do
   if [[ ! -d "${SITE_BASE}/assignments/${i}" ]] ; then
     echo "Creating dir ${SITE_BASE}/assignments/${i}"
