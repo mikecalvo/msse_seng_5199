@@ -63,7 +63,8 @@ slidenumbers: true
 ---
 
 # Many Other Options
-- Ruby/Rails
+- Node
+- Rails
 - PHP
 - .NET
 - Backbone
@@ -84,7 +85,7 @@ _I welcome comparisons and discussion especially from those with direct experien
 - Project must build
 - All requirements must be verified with passing tests
 - Must be submitted to me by midnight of the due date
-  - Can be turned in one week late for reduction of one letter grade
+- Can be turned in one week late (minus letter grade)
 
 ---
 
