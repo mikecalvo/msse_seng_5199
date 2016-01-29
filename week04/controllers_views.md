@@ -1,4 +1,4 @@
-footer: © Citronella Software Ltd 2015
+footer: © Citronella Software Ltd 2016
 slidenumbers: true
 
 # Controllers & Views
@@ -138,12 +138,14 @@ class ArtistController {
 ```
 
 ---
+
 # Controller Unit Tests
 - Let's look at a unit test for this simple controller
 - Use @TestFor to tell Grails this is testing a controller
 - Use @Mock to mock out domain interactions
 
 ---
+
 # Adding a View
 - The controller is simply performing a lookup and returning a model object
 - The view is how the end customer will see the response
@@ -151,6 +153,7 @@ class ArtistController {
   `grails-app/views/controller-name/action-name.gsp`
 
 ---
+
 # GSP - Groovy Server Page
 - View templates which combine code with Markup
 - Rendered into final markup *on the server*

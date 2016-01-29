@@ -1,4 +1,4 @@
-footer: © Citronella Software Ltd 2015
+footer: © Citronella Software Ltd 2016
 slidenumbers: true
 
 # GORM Basics
@@ -18,7 +18,7 @@ slidenumbers: true
 # GORM Values
 - No SQL
 - No XML
-- No Annodations
+- No Annotations
 - Reasonable defaults
 - DRY
 
@@ -101,6 +101,7 @@ class User {
     User.get(user.id).email == 'mike@calvo.com'
   }
 ```
+
 ---
 
 # 'Silent Failure'
@@ -181,7 +182,8 @@ def 'deleting an existing user removes it from the database'() {
 ---
 
 # Domain Constraints Example
-```
+
+``` groovy
 class User {
 
   String email
@@ -196,10 +198,12 @@ class User {
   }
 }
 ```
+
 ---
 
 # Domain Constraints Example Test
-```
+
+``` groovy
 def 'saving a user with invalid properties fails to validate'() {
   setup:
   def user = new User(email: 'not', password: '123', status: 'a'*200)
@@ -255,7 +259,7 @@ static constraints {
 
 # Example One-to-one
 
-```
+``` groovy
 class User {
   String username
   String password
@@ -368,8 +372,7 @@ class OrderLine {
 - Use hasMany on both sides of a many-to-many relationship
 - The owned side of the relationship should also have a belongsTo defined
 - Many-to-many can also be self-referring
-- Cascading with many-to-many works just like it does with one-to-many
-  - Cascades only happen when a belongsTo exists
+- Cascades only happen when a belongsTo exists
 
 ---
 

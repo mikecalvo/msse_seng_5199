@@ -1,4 +1,4 @@
-footer: © Citronella Software Ltd 2015
+footer: © Citronella Software Ltd 2016
 slidenumbers: true
 
 # GORM Data
@@ -31,7 +31,8 @@ slidenumbers: true
 ---
 
 # Environment Examples
-```
+
+``` groovy
 class BootStrap {
   def init = { servletContext ->
     environments {
