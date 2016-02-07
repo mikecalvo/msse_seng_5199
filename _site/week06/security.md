@@ -116,10 +116,7 @@ slidenumbers: true
 ``` groovy
 compile "org.grails.plugins:spring-security-rest:2.0.0.M2"
 ```
-- [Reference Documentation](http://alvarosanchez.github.io/grails-spring-security-rest/2.0.0.M2/docs/index.html)
-- Supports Grails 3!
-
----
+[Reference Documentation](http://alvarosanchez.github.io/grails-spring-security-rest/2.0.0.M2/docs/index.html)
 
 OLD Grails 2.X Content below:
 

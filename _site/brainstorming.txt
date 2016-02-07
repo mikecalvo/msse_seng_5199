@@ -1,0 +1,33 @@
+Idea 1: keep course the same
+
+Issues:
+- Grails becoming irrelevant
+- GSP approach to UI waste of time
+- Better to have more smaller assignments
+- Need to update version numbers at the very least
+
+---
+
+Idea 2: Compare 4 server approaches
+
+Client: AngularJs
+Server: compare a few server technologies:
+Grails
+SpringBoot
+RatPack
+NodeJS - Express
+Issues:
+- Too many topics to cover in 14 weeks
+- Heavy lift to prepare topics in SpringBoot, RatPack, NodeJS
+
+---
+
+Idea 3: Stick with Grails, remove GSP Part
+Advantages:
+- Less work for me
+- Less content
+
+---
+Overall Goals:
+Simplify programming assignments
+Move to 4 assignments

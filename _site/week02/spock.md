@@ -24,12 +24,7 @@ slidenumbers: true
 # Simple Rules
 - Extend Specification
 - Fixture methods: setup, cleanup, setupSpec, cleanupSpec
-- Define feature methods:
-
-``` groovy
-def "pop items from stack"() { ... }
-```
-
+- Define feature methods: `def "pop items from stack"() { ... }`
 - Blocks: setup (given), when, then, expect, where, cleanup
 
 ---
@@ -105,11 +100,7 @@ then:
 
 # Mocks
 - Spock supports mocking of all non-final Java and Groovy classes
-- Creating a mock:
-
-``` groovy
-def s = Mock(TypeToBeMocked)
-```
+- Creating a mock: `def s = Mock(TypeToBeMocked)`
 - Calling a method on a mock instance signifies that it is expected to be invoked
 - Interactions can be required or optional (cardinality)
 - Constraints can be placed on arguments
@@ -139,20 +130,11 @@ n * subscriber.receive(event)      // exactly n times
 
 # Return values
 - Returning a single value:
-
-``` groovy
-subscriber.isAlive() >> true  
-```
+`subscriber.isAlive() >> true`
 - Returning a different value per invocation:
-
-``` groovy
-subscriber.isAlive() >>> [true, false, true]
-```
+`subscriber.isAlive() >>> [true, false, true]`
 - Defining a new implementation:
-
-``` groovy
-subscriber.isAlive() >> { random.nextBoolean() }
-```
+`subscriber.isAlive() >> { random.nextBoolean() }`
 
 ---
 
@@ -290,5 +272,6 @@ http://meetspock.appspot.com/?id=9001
 ---
 
 # Spock with Grails
-- Grails 3 comes with Spock support built in
-[https://grails.github.io/grails-doc/latest/guide/testing.html](https://grails.github.io/grails-doc/latest/guide/testing.html)
+- Version 2.4.4 comes with Spock support built in
+
+http://grails.org/plugin/spock
