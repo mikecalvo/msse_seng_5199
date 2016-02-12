@@ -158,7 +158,8 @@ Example http://myserver/process?gender=Male&firstName=Mike
 
 ---
 # CSS Selector examples:
-```
+
+``` css
 /* Tag name */
 h1 {
   color: red;
@@ -177,6 +178,7 @@ h1 {
 
 ---
 # Style Examples
+
 ```html
 <html>
 <head>
@@ -215,6 +217,7 @@ h1 {
 `h1.headline { color: black; }`
 Matches all h1 elements with a class attribute of “headline”
 - May be grouped
+
 `h1, h2, h3 {  font-family: sans-serif }`
 
 ---
@@ -353,6 +356,7 @@ Matches all h1 elements with a class attribute of “headline”
 
 ---
 # Validation Example
+
 ```javascript
 def validate = function() {
   var firstName = document.getElementById('first').value
