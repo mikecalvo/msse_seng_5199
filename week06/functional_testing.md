@@ -2,10 +2,13 @@ footer: © Citronella Software Ltd 2016
 slidenumbers: true
 
 # Functional Testing
+
 ## Mike Calvo
+
 ### mike@citronellasoftware.com
 
 ---
+
 # Functional Tests
 - Testing the view requires an end-to-end style approach
 - Functional tests perform this verification
@@ -13,6 +16,7 @@ slidenumbers: true
 - Test issues an HTTP request
 
 ---
+
 # Grails Functional Tests
 - Grails includes Geb Framework
 - Geb is a Groovy-based browser testing framework
@@ -20,6 +24,7 @@ slidenumbers: true
 - http-builder library: simplify making HTTP requests
 
 ---
+
 # http-builder
 [https://github.com/jgritman/httpbuilder/wiki](https://github.com/jgritman/httpbuilder/wiki)
 
@@ -30,6 +35,7 @@ testCompile 'org.codehaus.groovy.modules.http-builder:http-builder:0.7'
 ```
 
 ---
+
 # Example http-builder
 
 ``` groovy
@@ -59,6 +65,7 @@ http.request(GET,TEXT) { req ->
 ```
 
 ---
+
 # Selenium
 - Browser automation tools and frameworks
 - Automate running web applications
@@ -66,6 +73,7 @@ http.request(GET,TEXT) { req ->
 - Web-based administration tasks
 
 ---
+
 # Selenium WebDriver
 - Language-specific bindings to drive a browser
 - Desktop browsers: Chrome, Firefox, IE, Safari
@@ -74,6 +82,7 @@ http.request(GET,TEXT) { req ->
 - Languages: C#, Java, JavaScript, Objective-C, Ruby
 
 ---
+
 # Example Selenium Java Test
 
 ``` groovy
@@ -85,6 +94,7 @@ assert driver.findElement(By.id('bandNameHeading')).getText() == 'U2';
 ```
 
 ---
+
 # Geb
 - Groovy layer built on top of Selenium WebDriver
 - Content DSL
@@ -93,6 +103,7 @@ assert driver.findElement(By.id('bandNameHeading')).getText() == 'U2';
   `$("#submitBtn").click();`
 
 ---
+
 # Geb DSL Example
 
 ``` groovy
@@ -124,14 +135,16 @@ Browser.drive {
 ```
 
 ---
+
 # More Geb Details
 - Functional tests live under test/functional
-- Geb works with both JUnit and Spock
+- Geb works with Spock
 - Geb tests are running outside the Grails app
 - Cannot directly use GORM, Controllers, or Services
 - Provides jQuery style element lookup within Groovy
 
 ---
+
 # Page Object Pattern
 - Geb encourages a page-oriented approach
 - Define Page objects that represent the key interaction elements of a page
@@ -140,12 +153,14 @@ Browser.drive {
 - Elements exposed by Page are available to the test or spec
 
 ---
+
 # Benefits of Page Object Pattern
 - All page-specific details are contained in the page Object
 - Create logical representations of the page that remain more consistent than DOM
 - Many tests can reuse common page definitions
 
 ---
+
 # Adding a Geb Test
 - Geb recommends a page-based approach to web testing
 - Each url gets its own Page class which defines the url and interesting elements
@@ -153,6 +168,7 @@ Browser.drive {
 - Pages typically live in a pages package under the test package
 
 ---
+
 # Exmaple Get Artist Page
 
 ``` groovy
@@ -171,6 +187,7 @@ class ArtistGetPage extends Page {
 ```
 
 ---
+
 # Example Geb Functional Test
 
 ``` groovy
@@ -191,6 +208,7 @@ class ArtistFunctionalSpec extends GebSpec {
 ```
 
 ---
+
 # Configuring Geb
 - Geb needs to know which test drivers to use
 - Create a file called GebConfig.groovy in the root of tests/functional
@@ -199,6 +217,7 @@ class ArtistFunctionalSpec extends GebSpec {
 - Browser size, behaviors, etc
 
 ---
+
 # Simple GebConfig.groovy
 ``` groovy
 import org.openqa.selenium.phantomjs.PhantomJSDriver
@@ -209,6 +228,7 @@ driver = {
 }
 ```
 ---
+
 # More on Geb
 - Interact with JavaScript
 - Interact with HTML form elements
