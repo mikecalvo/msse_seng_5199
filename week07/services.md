@@ -2,15 +2,19 @@ footer: © Citronella Software Ltd 2015
 slidenumbers: true
 
 # Grails Services
+
 ## Mike Calvo
+
 ### mike@citronellasoftware.com
 
 ---
+
 # Services with Detours
 - Transactions
 - Dependency Injection
 
 ---
+
 # Services Defined
 - Architectural layer of Grails
 - Reusable business logic
@@ -18,6 +22,7 @@ slidenumbers: true
 - Transactional
 
 ---
+
 # Conventions
 - Live in grails-app/services
 - End in 'Services'
@@ -27,6 +32,7 @@ slidenumbers: true
 - Camel-case version can be injected into other components
 
 ---
+
 # Common Service Logic
 - All Domain interactions
 - External system integrations
@@ -35,6 +41,7 @@ slidenumbers: true
 - Any non-UI handling logic
 
 ---
+
 # Detour 1:  Transaction Review
 - Sequence of operations that should be treated as a single operation
 - Only succeeds if every operation succeeds
@@ -43,6 +50,7 @@ slidenumbers: true
 - Rollback: abort the transaction (no changes)
 
 ---
+
 # ACID properties
   **Atomic**:
     -All or nothing
@@ -54,6 +62,7 @@ slidenumbers: true
     -Permanently made (written to storage)
 
 ---
+
 # Classic Account Transfer Example
 - Both withdraw and deposit must succeed for transfer to succeed (atomic)
 - Sum of both accounts must be the same after transfer (consistency)
@@ -61,6 +70,7 @@ slidenumbers: true
 - Bank systems must have correct amounts (durability)
 
 ---
+
 # Service Transactions
 - Based on Spring Transactions
 - Default behavior:
@@ -70,6 +80,7 @@ slidenumbers: true
   1. Runtime Exception: Rollback transaction
 
 ---
+
 # Transactional Behavior
 - Only available via dependency injection
 - Only works when called externally
@@ -78,6 +89,7 @@ slidenumbers: true
 - Checked exceptions are not automatically rolled back
 
 ---
+
 # Hibernate Session and Rollback
 - Hibernate session is closed on rollback
 - Subsequent attempts to reference lazy loaded relationships will fail
@@ -86,6 +98,7 @@ slidenumbers: true
   - Redirect to new request after rollback
 
 ---
+
 # Changing Service Transactions
 - To disable automatic transactions on service:
 `static transactional = false`
@@ -95,6 +108,7 @@ slidenumbers: true
 - Good idea to think about read only methods
 
 ---
+
 # withTransaction Alternative
 - Grails/GORM provides a withTransaction method on all domain classes
 - This allows for fine-grained transactions which can be defined anywhere
@@ -103,6 +117,7 @@ slidenumbers: true
   - Integration Tests
 
 ---
+
 # withTransaction Example
 
 ```
@@ -127,11 +142,13 @@ class AlbumController {
 ```
 
 ---
+
 # Notes on withTransaction
 - Service-based transactions are preferred
 - Doesn't matter which domain class you call it on
 
 ---
+
 # Creating a Service
 - Run the grails script:
   `grailsw create-service servicename`
@@ -139,7 +156,9 @@ class AlbumController {
 - Alternatively, simply create a service class in grails-app/services
 
 ---
+
 # Example Service
+
 ```
 class PostService {
     Post createPost(String userId, String comment) {
@@ -162,7 +181,9 @@ class PostService {
 ```
 
 ---
+
 # Service Spec
+
 ```
 @TestFor(PostService)
 @Mock([User,Post])
@@ -181,12 +202,14 @@ class PostServiceSpec extends Specification {
 ```
 
 ---
+
 # Detour #2: Dependency Injection
 - Based on Inversion of Control pattern
 - class A depends on class B
 - Don't have A create B - let a container 'inject' it
 
 ---
+
 # Example Without IOC
 - Class A cannot be tested without testing class B as well
 
@@ -201,6 +224,7 @@ class A {
 ```
 
 ---
+
 # Example With IOC
 
 ```
@@ -215,6 +239,7 @@ class A {
 
 ```
 ---
+
 # Dependency Injection Benefits
 - Makes code more unit testable
 - Allows for more flexible component relationships
@@ -223,11 +248,13 @@ class A {
   - This is how Spring provides transactional support
 
 ---
+
 # Dependency Autowiring
 - Spring wire beans by name or by type
 - In Grails the convention is to wire by name
 
 ---
+
 # Other Injectable Spring Beans
 - grailsApplication
 - sessionFactory
@@ -235,6 +262,7 @@ class A {
 - messageSource
 
 ---
+
 # Using A Service
 - Inject the service into your controller by adding a member matching your service name:
 
@@ -249,6 +277,7 @@ class PostController {
 ```
 
 ---
+
 # Service Names
 - Plugins may provide services
 - To avoid name collections when injecting, Grails adds a prefix to the service name matching the name of the plugin
@@ -256,6 +285,7 @@ class PostController {
   `def taxerTaxService`
 
 ---
+
 # Service State
 - Services are singletons by default
 - Likely to be called concurrently
@@ -263,6 +293,7 @@ class PostController {
   - Can be used for caching
 
 ---
+
 # Changing Service Scope
 - Default singleton scope can be changed using static scope property
 - Supported scopes:
@@ -272,6 +303,7 @@ class PostController {
   - singleton: default (does not need to be specified)
 
 ---
+
 # Example Service
 - Create a service for the muzic app to add a play of a song
 - Look up the artist by name and create it if not found
@@ -279,6 +311,7 @@ class PostController {
 - Add a play
 
 ---
+
 # Testing Transactions
 - Integration tests are run inside a transaction by default and are automatically rolled back after each test
   - Integration tests for rollbacks must be marked as transactional = false
@@ -286,6 +319,7 @@ class PostController {
   - Be sure to include flush: true on saves for setup data
 
 ---
+
 # Final Recommendations
 - Use services for business logic
 - Leverage Dependency Injection
