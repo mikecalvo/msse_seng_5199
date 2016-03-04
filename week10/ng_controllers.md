@@ -2,10 +2,13 @@ footer: © Citronella Software Ltd 2015
 slidenumbers: true
 
 # Angular Controllers
+
 ## Mike Calvo
+
 ## mike@citronellasoftware.com
 
 ---
+
 # Controllers
 - Support the view
 - Provide data/model to the view
@@ -13,6 +16,7 @@ slidenumbers: true
 - Control the flow of the application
 
 ---
+
 # One Screen/View Per Controller
 - Single page app, multiple views
 - Single page means the entire page is only loaded once
@@ -20,6 +24,7 @@ slidenumbers: true
 - Each screen should have its own controller
 
 ---
+
 # Creating an Angular Application
 `angular.module('appname', [ ])`
 - The array after the name is important
@@ -30,6 +35,7 @@ slidenumbers: true
   `angular.module('appname')`
 
 ---
+
 # Creating the Angular Application in HTML
 - Add ng-app attribute to your page
 - Value is the app name provided in the `angular.module` call
@@ -37,6 +43,7 @@ slidenumbers: true
 `<html ng-app="app">`
 
 ---
+
 # Angular Attributes
 - What is ng-app?
 - Angular directive
@@ -45,6 +52,7 @@ slidenumbers: true
 - All angular HTML code must exist within an element annotated with ng-app
 
 ---
+
 # Creating a Controller
 - Controllers are created from the application
 - Specify the name of the controller
@@ -58,6 +66,7 @@ angular.module('appname').controller('exampleController', function($scope) {
 ```
 
 ---
+
 # Good Practice: Controller Per File
 - Angular promotes component-based development in JavaScript
 - Common Conventions:
@@ -65,6 +74,7 @@ angular.module('appname').controller('exampleController', function($scope) {
   - Put each controller in its own file
 
 ---
+
 # Controller Lifecycle
 - The controller function is called when an element on the page includes the controller
 - ng-controller="controllerName"
@@ -73,6 +83,7 @@ angular.module('appname').controller('exampleController', function($scope) {
 - Parameters to the function are resolved by Angular
 
 ---
+
 # Angular dependency injection
 - Angular provides a dependency resolution model
 - Some dependencies are a core part of angular
@@ -80,6 +91,7 @@ angular.module('appname').controller('exampleController', function($scope) {
 - Example: $scope
 
 ---
+
 # Scope
 - Every Angular component has a scope
 - This defines the set of data that is visible to the component
@@ -87,6 +99,7 @@ angular.module('appname').controller('exampleController', function($scope) {
 - Child scopes can see data their parents scopes
 
 ---
+
 # Example Controller: songPlaysController
 
 ``` javascript
@@ -104,6 +117,7 @@ angular.module('app').controller('songPlaysController', function ($scope) {
 ```
 
 ---
+
 # Angular View Expressions
 - Output value from scope directly into the page
 - Wrap expression within {{ }}
@@ -111,6 +125,7 @@ angular.module('app').controller('songPlaysController', function ($scope) {
 - One-way binding: view follows the model
 
 ---
+
 # Repeating over Lists
 - Angular ng-repeat directive
 - Causes the element on which it is placed to be repeated for each time in the expression
@@ -123,6 +138,7 @@ angular.module('app').controller('songPlaysController', function ($scope) {
 ```
 
 ---
+
 # View Example: Display Song Plays
 
 ``` html
@@ -143,6 +159,7 @@ angular.module('app').controller('songPlaysController', function ($scope) {
 ```
 
 ---
+
 # Handling Input
 - Getting a controller to respond to UI events
 1. Create a function on the controller
@@ -150,6 +167,7 @@ angular.module('app').controller('songPlaysController', function ($scope) {
 1. Add a directive to the element on the page connecting the event to the function
 
 ---
+
 # Example: Handle Button Press
 - In HTML:
 `<button ng-click="addPlay()">Add a Play</button>`
@@ -165,12 +183,14 @@ $scope.addPlay = function() {
 ```
 
 ---
+
 # Editing New Play
 - Allow the user to specify song name and artist
 - Conditionally display input fields
 - Conditionally display a save button
 
 ---
+
 # Directive: ng-show
 - Conditionally show or hide an element
 - Value of attribute is expression that evaluates to true/false
@@ -180,6 +200,7 @@ $scope.addPlay = function() {
 ```
 
 ---
+
 # Directive: ng-model
 - Bind an input field to a model value
 - 2-Way binding:
@@ -192,6 +213,7 @@ $scope.addPlay = function() {
 ```
 
 ---
+
 # Create a Row For Editing
 - Only shown if there is a new play available to edit
 
@@ -210,6 +232,7 @@ $scope.addPlay = function() {
 ```
 
 ---
+
 # Controller Changes:
 
 ```javascript
@@ -225,6 +248,7 @@ $scope.savePlay = function() {
 ```
 
 ---
+
 # Controller Behaviors
 - Functions on the controller that the view can call are behaviors
 - They can be invoked from any directive:
@@ -233,6 +257,7 @@ $scope.savePlay = function() {
   - Determining state (ng-show="isItVisible()")
 
 ---
+
 # Behavior Parameters
 - Example:
 
@@ -244,6 +269,7 @@ $scope.savePlay = function() {
 ```
 
 ---
+
 # Creating Dynamic HTML Attributes
 - If your element id requires a dynamic value, use ng-id
 - If your class requires a dynamic value (dynamically styled) use ng-class
@@ -256,6 +282,7 @@ $scope.savePlay = function() {
 ```
 
 ---
+
 # Select Control
 - Angular provides support for the select/dropdown control
 - ng-options directive used to populate the options
@@ -264,6 +291,7 @@ $scope.savePlay = function() {
 - Controller generally populates the list that backs the select
 
 ---
+
 # Example ng-options
 
 ``` html
@@ -281,6 +309,7 @@ angular.module('app').controller('songController', function($scope) {
 ```
 
 ---
+
 # Watching Scope
 - Controllers can monitor scope state changes
 - $scope.$watch('value', callback)
@@ -289,6 +318,7 @@ angular.module('app').controller('songController', function($scope) {
   - callback called any time something added or removed
 
 ---
+
 # Watch Scope Example
 
 ``` javascript
@@ -309,28 +339,33 @@ $scope.$watch('songStyle', function(style) {
 - What are they?
 
 ---
+
 # Controllers Should
 - Initialize the scope
 - Contain functionality required by the view to present the model
 - Contain functionality to update the scope based on user interaction
 
 ---
+
 # Controllers Should Not
 - Manipulate the DOM
 - Persist data
 - Manipulate data outside the scope
 
 ---
+
 # Views Should
 - Contain markup required to present data to the user
 - Contain minimal amounts of logic relating to the presentation of the data
 
 ---
+
 # Views Should Not
 - Contain any complex logic
 - Contain any logic that alters the model
 
 ---
+
 # Summary
 - Controllers provide data and functionality to views
 - Views are HTML-based UI with special angular attributes called directives

@@ -2,7 +2,9 @@ footer: © Citronella Software Ltd 2015
 slidenumbers: true
 
 # Node, Bower and Grunt
+
 ## Mike Calvo
+
 ## mike@citronellasoftware.com
 
 ---
