@@ -162,6 +162,7 @@ bower install bootstrap
 ```
 
 ---
+
 # Initialize Bower in Your Grails Project
 1. From your project root:
   `node_modules/.bin/bower init`
@@ -170,6 +171,7 @@ bower install bootstrap
   - Answer 'n' to add common ignores question
 
 ---
+
 # Configure Bower
 - Tell bower where to install dependencies
 - Create a file called .bowerrc in your root project folder:
@@ -202,6 +204,7 @@ bower install bootstrap
 1. Check the bower.json file to be sure in includes jquery and angular
 
 ---
+
 # Grunt
 - [gruntjs.com](http://www.gruntjs.com)
 - JavaScript Task Runner
@@ -210,6 +213,7 @@ bower install bootstrap
 - Plugin model
 
 ---
+
 # Example Grunt Plugins
 - CoffeeScript
 - Static Code Analysis: JSHint
@@ -217,6 +221,7 @@ bower install bootstrap
 - Templates: Handlebars and Jade
 
 ---
+
 # Installing Grunt
 - Use npm
 1. In your project root folder:
@@ -227,6 +232,7 @@ bower install bootstrap
 `node_modules/.bin/grunt`
 
 ---
+
 # Gruntfile.js
 - Grunt is configured by a JavaScript file
 - Similar to makefile, Ant config or Grails Build config
@@ -234,6 +240,7 @@ bower install bootstrap
 - Our project will want to launch bower to install or update dependencies
 
 ---
+
 # Gruntfile to run Bower
 ``` javascript
 module.exports = function (grunt) {
@@ -263,13 +270,15 @@ module.exports = function (grunt) {
 ```
 
 ---
+
 # Integrating npm, Bower and Grunt with Grails
 - Tie running of the grunt to the normal Grails build
 - Add a file called `_Events.groovy` to `grails-app/scripts
 - This file can be used to tie into Grails build process events
 
 ---
-# _Events.groovy
+
+# \_Events.groovy
 
 ``` groovy
 eventCompileStart = { kind ->
@@ -280,6 +289,7 @@ eventCompileStart = { kind ->
 ```
 
 ---
+
 # \_Events.groovy (continued)
 
 ```
@@ -296,6 +306,7 @@ private void executeNpmInstall() {
 ```
 
 ---
+
 # \_Events.groovy (end)
 
 ``` groovy
@@ -315,6 +326,7 @@ private void executeGruntTasks() {
 ```
 
 ---
+
 # Upating .gitignore
 - You don't want to check in any node or bower dependencies
 - Update your .gitignore to include
@@ -324,6 +336,7 @@ private void executeGruntTasks() {
 ```
 
 ---
+
 # What's Next?
 - You are now ready to use Angular JS
 - You are setup to add other web project dependencies easily
