@@ -206,7 +206,7 @@ slidenumbers: true
 ``` javascript
 var app = angular.module('app', []);
 app.controller('welcomeController', function($scope) {
-  $scope.message = 'Welcome to the Muzic App'l
+  $scope.message = 'Welcome to the Muzic App'
 });
 ```
 
