@@ -10,7 +10,6 @@ slidenumbers: true
 ---
 
 # HTML
-- You know it, you love it
 - Document markup language
 - Defines:
   - Document Structure

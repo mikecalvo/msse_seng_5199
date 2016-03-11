@@ -120,7 +120,7 @@ slidenumbers: true
 
 # withTransaction Example
 
-```
+``` groovy
 class AlbumController {
 
   def addAlbum(String title, String artistName) {
