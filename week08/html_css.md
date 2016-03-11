@@ -45,7 +45,7 @@ slidenumbers: true
 
 ---
 
-# HTML Document Structure Elements
+# HTML Document Structure
 - p: Paragraph
 - div: Division Block (container of containers)
 - span: Inline Text
@@ -54,10 +54,10 @@ slidenumbers: true
 
 # HTML Escaping
 - Characters used to define HTML need to be escaped
-- < `&lt;`
-- > `&gt;`
-- & `&amp;`
-- : `&quot;`
+- \< `&lt;`
+- \> `&gt;`
+- \& `&amp;`
+- \' `&quot;`
 - Generically: `&#ascii_code;`
 
 ---
@@ -307,6 +307,7 @@ div {
 - 0 values do not require units
 
 ---
+
 # Shorthand Properties
 - Some groups of properties can be set with a single space seperated property
 
