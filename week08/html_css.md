@@ -55,7 +55,7 @@ slidenumbers: true
 - Characters used to define HTML need to be escaped
 - \< `&lt;`
 - \> `&gt;`
-- \& `&amp;`
+- & `&amp;`
 - \' `&quot;`
 - Generically: `&#ascii_code;`
 
