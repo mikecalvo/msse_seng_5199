@@ -1,8 +1,10 @@
-footer: © Citronella Software Ltd 2015
+footer: © Citronella Software Ltd 2016
 slidenumbers: true
 
 # HTML and CSS Overview
+
 ## Mike Calvo
+
 ## mike@citronellasoftware.com
 
 ---
@@ -59,6 +61,7 @@ slidenumbers: true
 - Generically: `&#ascii_code;`
 
 ---
+
 # HTML Forms: User Input
 - Elements that render UI controls
 - INPUT tag: text fields, text areas, checkbox
@@ -134,6 +137,7 @@ slidenumbers: true
 - Each declaration is a collection of property, value pairs
 
 ---
+
 # Example Stylesheet
 
 ``` css
@@ -191,6 +195,7 @@ div: {
   - Append a '::' to the selector by name
 
 ---
+
 # Pseudo Examples
 - checked (`option:checked { color: red; }`)
 - hover (`.info:hover { font-weight: bold; }`)
@@ -199,6 +204,7 @@ div: {
 - not (`div:(#container) { color: 'blue'; }`)
 
 ---
+
 # More Pseudo Examples
 - first-child
 - last-child
@@ -213,6 +219,7 @@ div: {
 - first-letter (p::first-letter { font-family:cursive; })
 
 ---
+
 # Non-Stylesheets
 - CSS can appear in other places
 - Internal style elements within HTML
@@ -281,6 +288,7 @@ div {
   - Controlled by 'display' property
 
 ---
+
 # CSS Position Property
 - static - 'normal position'
 - relative - adjust slightly from normal (top, bottom, left, right)

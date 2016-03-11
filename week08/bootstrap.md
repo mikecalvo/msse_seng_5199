@@ -1,8 +1,10 @@
-footer: © Citronella Software Ltd 2015
+footer: © Citronella Software Ltd 2016
 slidenumbers: true
 
 # Twitter Bootstrap
+
 ## Mike Calvo
+
 ## mike@citronellasoftware.com
 
 ---
@@ -63,6 +65,7 @@ slidenumbers: true
 - .col-lg-[colspan] : desktop (1200px)
 
 ---
+
 # Examples of Grid System
 [http://getbootstrap.com/css/](http://getbootstrap.com/css/)
 
@@ -76,6 +79,7 @@ slidenumbers: true
 - .col-lg-[cols]
 
 ---
+
 # Beautiful CSS
 - Styling for semantic elements (Headings, paragraphs, emphasize, small ,etc)
 - Alignment classes: text-left, text-center, text-right
@@ -89,6 +93,7 @@ slidenumbers: true
 - Forms - clean labels, inline forms, placeholders, horizontal forms, validation
 
 ---
+
 # Components
 - Glyphs - icons
 - Button groups
@@ -98,10 +103,12 @@ slidenumbers: true
 - Pagination
 
 ---
+
 # Explore Components
 [http://getbootstrap.com/components/](http://getbootstrap.com/components/)
 
 ---
+
 # JavaScript
 - Rich set of interactive controls
 - Transition
@@ -110,10 +117,12 @@ slidenumbers: true
 - Tooltips
 
 ---
+
 # Explore Bootstrap JS
 [http://getbootstrap.com/javascript/](http://getbootstrap.com/javascript/)
 
 ---
+
 # JavaScript Warning
 - Be sure to use the Angular UI plugin to get components that play well with Angular
 [http://angular-ui.github.io/bootstrap/](http://angular-ui.github.io/bootstrap/)

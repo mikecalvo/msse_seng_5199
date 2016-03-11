@@ -1,8 +1,10 @@
-footer: © Citronella Software Ltd 2015
+footer: © Citronella Software Ltd 2016
 slidenumbers: true
 
 # Javascript
+
 ## Mike Calvo
+
 ## mike@citronellasoftware.com
 
 ---
@@ -114,7 +116,7 @@ person.zip // !!! undefined !!!
 
 # What are Prototypes?
 - A base set of properties that are cloned/copied to form a new type
-- It is not inheritence in the same way Groovy/Java/C# classes inherit from each other
+- It is not inheritance in the same way Groovy/Java/C# classes inherit from each other
 - Every object has a prototype
 - Prototypes can be modified at run time
 - Use `new` or Object.create to extend another object
@@ -133,6 +135,7 @@ employee.work();
 ```
 
 ---
+
 # Javascript Reflection
 
 ``` javascript
@@ -148,6 +151,7 @@ obj.hasOwnProperty('color') // false
 ```
 
 ---
+
 # Looping Over Properties
 
 ``` javascript
@@ -172,6 +176,7 @@ delete array[1]; // ['a', undefined, 'c']
 ```
 
 ---
+
 # Method Invocation Model
 - Calling a function stored on an object
 - Inside function 'this' refers to the instance on whom the method is called
@@ -186,6 +191,7 @@ var obj = {
 ```
 
 ---
+
 # Plain Function Invocation
 - Calling a function that is assigned to a variable or simply defined
 - Global object is bound to this (boo!)
@@ -205,6 +211,7 @@ var obj = {
 ```
 
 ---
+
 # Constructor Invocation
 - Calling a function with the 'new' keyword
 - Not the same as calling a constructor in classic OO languages
@@ -225,12 +232,14 @@ new Person('John').get_name();
 ```
 
 ---
+
 # Apply Invocation
 - Dynamically invoke a function
 - Supply the arguments
 - Supply the 'this'
 
 ---
+
 # Apply Example
 
 ``` javascript
@@ -243,6 +252,7 @@ add.apply(null, [5, 6]);
 ```
 
 ---
+
 # Arguments
 - Javascript has flexible argument rules
 - Callers of a function don't have to match the argument parameters exactly
@@ -251,6 +261,7 @@ add.apply(null, [5, 6]);
 - All functions can access the complete set of arguments via the arguments value which is an array
 
 ---
+
 # Arguments Example
 
 ``` javascript
@@ -267,6 +278,7 @@ addAll(2, 5, 6, 7, 10, 22);
 
 ```
 ---
+
 # Augmenting Types
 - Prototypes - even of system types - can be changed at run time
 - String is missing the trim function...
@@ -280,6 +292,7 @@ String.prototype['trim'] = function() {
 ```
 
 ---
+
 # Global Scope
 - By default, Javascript puts variables in global scope
 - Need tricks to avoid this:
@@ -306,6 +319,7 @@ object.value; // !!! Undefined !!!
 ```
 
 ---
+
 # Callbacks
 - Common pattern in JavaScript
 - Functions that run asynchronously get a function parameter
@@ -313,6 +327,7 @@ object.value; // !!! Undefined !!!
 - When the asychronous execution completes, the callback is called
 
 ---
+
 # Callback Example
 
 ``` javascript
@@ -322,12 +337,14 @@ sendMyRequest(url, function(status) {
 ```
 
 ---
+
 # Regular Expressions
 - Core type in JavaScript
 - /regex/
 - Use test() to check for match
 
 ---
+
 # RegEx Example
 
 ``` javascript
@@ -341,14 +358,16 @@ parse_number.test('192.168.1.1'); // false
 ```
 
 ---
+
 # JavaScript in HTML
 - Javascript code can exist within `<script>` tags
 - Externally defined Javascript files can be included using `src` attribute
 - Script tags can live in the head and the body
 - Script tags are executed in order within the page
-- JavaScript code has accss to the HTML document (DOM)
+- JavaScript code has access to the HTML document (DOM)
 
 ---
+
 # Example HTML Scripts
 
 ``` html
@@ -368,9 +387,9 @@ parse_number.test('192.168.1.1'); // false
 ```
 
 ---
+
 # Excellent JavaScript Books
 - 'JavaScript: The Good Parts' by Crockford
 - 'Eloquent JavaScript' by Haverbeke
 - 'Functional JavaScript' by Fogus
 - 'JavaScript Design Patterns' by Osmani
-- Others?
