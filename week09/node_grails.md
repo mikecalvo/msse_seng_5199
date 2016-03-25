@@ -232,3 +232,7 @@ class WelcomePageFunctionalSpec extends GebSpec {
  - Runs test in chrome
 
 ---
+# Wrap up
+-  http://mikecalvo.github.io/msse/examples/grails_angular/
+
+- kapkema@gmail.com
