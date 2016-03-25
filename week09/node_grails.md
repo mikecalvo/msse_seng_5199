@@ -80,8 +80,32 @@ clean.dependsOn bowerClean
 
 ---
 # Grails Asset Pipeline
+- Simplifies bundling and uglifying scripts for deployment
+- Options for including assets: tags and manifests
+- Building war file will 'compile' assets for deployment
+
+---
+# Grails Asset Pipeline Integration
 - Application.js and application.css are the two files that integrate with the Grails asset pipeline to bring in the required javascript/css for the page.
 - The directives are comments at the top of the file that tell the pipeline which files or trees of files should be loaded.
+
+---
+# Asset Pipeline Directives
+- require: include a single file
+- require_self: include the body of the current file
+- require_tree: include all files and subdirectories in the path
+- require_full_tree: used for including files from plugins
+
+---
+
+# Example Directives
+- Include a specific file:
+`//= require jquery/dist/jquery`
+- Include all files in a directory:
+`//= require_tree .`
+- Include the contents of the resource
+`//= require_self`
+- Files in the assets folder are flattened up one level
 
 ---
 # Add the Javascript assets
