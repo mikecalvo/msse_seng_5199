@@ -94,3 +94,133 @@ clean.dependsOn bowerClean
 ```
 
 ---
+# Create Angular App view
+- Create, or replace, index.gsp with basic angular app
+- Standard html with a few special attributes
+
+```html
+<!doctype html>
+<html>
+<head>
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+
+  <asset:javascript src="application.js"/>
+  <asset:stylesheet src="application.css"/>
+</head>
+
+<body ng-app="app">
+  <h1>Welcome to the sample Grails 3 Angular App</h1>
+
+  <div ng-controller="welcomeController">
+    <h2></h2>
+  </div>
+
+</body>
+</html>
+```
+
+---
+# In the `<head>`
+- `asset` elements are grails asset pipeline directives
+- `asset:javascript` maps to grails-app/assets/javascripts
+- `asset:stylesheet` maps to grails-app/assets/stylesheets
+
+```html  
+  <asset:javascript src="application.js"/>
+  <asset:stylesheet src="application.css"/>
+```
+
+---
+# On the `<body>`
+- `ng-app` is an angular attribute directive declaring your app
+- `"app"` corresponds to the name of angular app defined in application.js
+
+```html
+<body ng-app="app">
+  ```
+
+---
+# The rest
+- `ng-controller` attribute directive declares what controller is used for the scope of that element (`<div>`)
+
+```html
+<div ng-controller="welcomeController">
+```  
+
+- Lots more to discuss on Angular later
+
+---
+# Functional Testing
+- Geb is a functional testing framework for creating automated UI tests.
+- It is bundled by default with Grails.
+- Works with many browsers by adding depenency javascripts
+
+---
+
+# Add Chrome and Firefox support
+- Add `testDependencies`
+
+```gradle
+dependencies {
+  // Other dependencies...
+
+  testRuntime 'org.seleniumhq.selenium:selenium-firefox-driver:2.44.0'
+  testRuntime 'org.seleniumhq.selenium:selenium-chrome-driver:2.44.0'
+
+}
+```
+
+- remember to run ```./gradlew idea``` when you add new dependencies
+
+---
+# Tell Geb to use Firefox & Chrome
+- GebConfig.groovy is the manifest that tells Geb what browsers to use
+- By default, Geb looks in `src/test/resources/GebConfig.groovy`
+
+```groovy
+driver = {
+  def path = System.properties['os.name'].toLowerCase().contains('windows') ?
+      'node_modules\\.bin\\chromedriver.exe' : './node_modules/.bin/chromedriver'
+  System.setProperty("webdriver.chrome.driver", path);
+  System.properties['browser']?.toString()?.toLowerCase() == 'chrome' ? new ChromeDriver(new DesiredCapabilities()) : new FirefoxDriver()
+}
+```
+
+---
+# Write a test
+- Create functional specs in 'src/integration-test'
+- use Grails annotation `@Integration`
+- extends GebSpec
+- Use selectors to locate elements in the page
+- compare the elemets contents with expected values
+
+---
+
+# In action
+
+```groovy
+@Integration
+class WelcomePageFunctionalSpec extends GebSpec {
+
+  def 'welcome page displays welcome message'() {
+    when:
+    go '/'
+
+    then: 'Static welcome displayed properly'
+    $('h1').first().text() == 'Welcome to the sample Grails 3 Angular App'
+
+    and: 'Angular generated test displayed properly'
+    $('h2').first().text() == 'Hello Stranger'
+  }
+}
+```
+---
+
+# Run the test
+- `./gradlew check`
+ - uses default browser from GebConfig.groovy (Firefox)
+- `./gradlew check -Dbrowser=chrome`
+ - Runs test in chrome
+
+---
