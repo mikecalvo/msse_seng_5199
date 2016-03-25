@@ -8,6 +8,14 @@ slidenumbers: true
 ### kapkema@gmail.com
 
 ---
+# Goal
+- Integrate a Grails app with bower packages
+ - Angular && Bootstrap
+- Use the Grails Asset pipeline to make bower installed dependencies available in app
+- Create a basic angular app to verify assets are correctly wired
+- Write a functional test to verify app
+
+---
 
 # Gradle Bower Plugin
 - Gradle manages Groovy library dependencies for Grails Projects
