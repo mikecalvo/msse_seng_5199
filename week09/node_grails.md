@@ -27,7 +27,7 @@ plugins {
 
 ---
 # Bower dependencies
-- Use of bower to manage Javascript packages
+- Use bower to manage Javascript packages
 - Use gradle to manage bower packages like Java (i.e maven)
 - Angular and Bootstrap are a good start
 
@@ -69,3 +69,28 @@ bower {
 compileJava.dependsOn bowerInstall
 clean.dependsOn bowerClean
 ```
+
+---
+# Grails Asset Pipeline
+- Application.js and application.css are the two files that integrate with the Grails asset pipeline to bring in the required javascript/css for the page.
+- The directives are comments at the top of the file that tell the pipeline which files or trees of files should be loaded.
+
+---
+# Add the Javascript assets
+- grails-app/assets/javascripts/application.js
+
+```javascript
+//= require ../bower/bootstrap/bootstrap.js
+//= require ../bower/angular/angular.js
+```
+
+---
+# Add the CSS assets
+- grails-app/assets/stylesheets/application.css
+
+```css
+*= require ../bower/angular/angular-csp.css
+*= require ../bower/bootstrap/css/bootstrap.css
+```
+
+---
