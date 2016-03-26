@@ -1,12 +1,11 @@
 footer: © Citronella Software Ltd 2016
 slidenumbers: true
 
-# Introduction to Angular
+## Introduction to Angular
 
-## Mike Calvo
+### Marc Kapke
 
-## mike@citronellasoftware.com
-
+#### kapkema@gmail.com
 ---
 
 # Angular Provides
@@ -15,6 +14,7 @@ slidenumbers: true
 - 2-way binding
 - Modular, component-based architecture
 - Extensible plugin-model
+- https://docs.angularjs.org/guide
 
 ---
 
@@ -36,24 +36,58 @@ slidenumbers: true
 
 ---
 
+# Angular Data binding
+- Two way binding
+  - Model automatically updates view
+  - View automatically updates model
+
+---
+
+# Angular Expressions
+- Expressions bind view to model
+- Binding in HTML attributes - (mustaches required)
+  - `<span title="{{ attrBinding }}">{{ textBinding }}</span>`
+- Binding in Angular directives - (no mustaces required)
+  -  `ng-click="functionExpression()"`
+
+---
+
 # Angular Controllers
 - Make data available in scope for view
 - Handle user interactions: button presses, fetching data
+- Business logic - no presentation logic!
 - Akin to Grails Controllers
+
+---
+
+# Angular Routes
+- Makes it easy to wire together controllers, view templates, and the current URL location in the browser.
+- Handles deep linking, which lets you utilize the browser's history (back and forward navigation) and bookmarks.
 
 ---
 
 # Angular Directives
 - Components that manipulate the DOM
+- Usually in the form of a custom HTML element or attribute
 - Akin to Grails tags
 
 ---
 
 # Angular Filters
 - Components that format values for display
-- Can also filter out objects that should not be displayed
+  - Format a decimal as currency
+  - Change casing
+- Works on single value or list
+  - Filter out 'hidden' items in list
+- Can be chained together to transform values multiple ways
 
 ---
+
+# Filter syntax
+- Use in views/templates
+  - `{{ expression | filter1 | filter2 | ... }}`
+- Can be used in Controllers/Services too
+  - Be careful - this often puts presentation logic where it shoudn't be
 
 # Angular Services
 - Shared code used by multiple controllers or directive
