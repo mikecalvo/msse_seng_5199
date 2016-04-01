@@ -10,10 +10,17 @@ slidenumbers: true
 ---
 # Goal
 - Integrate a Grails app with bower packages
- - Angular && Bootstrap
+ - Angular and Bootstrap
 - Use the Grails Asset pipeline to make bower installed dependencies available in app
 - Create a basic angular app to verify assets are correctly wired
 - Write a functional test to verify app
+
+---
+
+#Setup
+- install node
+  - gives you npm
+- install bower globally `npm install -g bower`
 
 ---
 
