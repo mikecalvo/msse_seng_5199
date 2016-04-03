@@ -1,5 +1,7 @@
-## Angular Routing
-### Mike Calvo
+---
+title: Web Application Development
+layout: default
+---
 ### mike@citronellasoftware.com
 
 ---
@@ -95,8 +97,6 @@ angular.module("app").config(function($routeProvider) {
 - Partial is an HTML file that defines a view
 - URL comes after the # in the single page:
 `http://localhost/auktion/#/listings`
-- Partials go in
-`src main webapp`
 
 ---
 
@@ -106,6 +106,21 @@ angular.module("app").config(function($routeProvider) {
 - Contents are inserted into view placeholder
 - Can contain directives
   - Including which controller feeds the view
+
+---
+
+# Asset pipeline configuation for templates
+1. Add the following to your build gradle under the dependencies section:
+   `assets "com.craigburke.angular:angular-template-asset-pipeline:2.2.7"`
+1. Add templates to the following directory in the format file_name.tpl.html
+  `grails-app/assets/javascripts/app/templates`
+
+---
+
+# Asset pipeline configuration continuted
+
+1. Reference the templates in router code without the tpl or templates directory
+`templateUrl : /app/file_name.html`
 
 ---
 
@@ -122,6 +137,20 @@ angular.module("app").config(function($routeProvider) {
   </tr>
 </table>
 </div>
+```
+---
+
+# Route Parameters
+- Parameters can be supplied to route - prefix with : in url
+
+``` javascript
+$routeProvider.when("/product:id", {
+  templateUrl: "/product.html"
+});
+
+$routeProvider.when("/customerProfile/:id/:addressId*") {
+  templateUrl: "/customerAddress.html"
+})
 ```
 
 ---
@@ -147,21 +176,6 @@ angular.module("app")
     $location.path("/item")
   }
 });
-```
-
----
-
-# Route Parameters
-- Parameters can be supplied to route - prefix with : in url
-
-``` javascript
-$routeProvider.when("/product:id", {
-  templateUrl: "/product.html"
-});
-
-$routeProvider.when("/customerProfile/:id/:addressId*") {
-  templateUrl: "/customerAddress.html"
-})
 ```
 
 ---
