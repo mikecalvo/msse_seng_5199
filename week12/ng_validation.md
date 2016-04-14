@@ -1,11 +1,14 @@
-footer: © Citronella Software Ltd 2015
+footer: © Citronella Software Ltd 2016
 slidenumbers: true
 
 # Angular Validation
+
 ## Mike Calvo
+
 ## mike@citronellasoftware.com
 
 ---
+
 # Angular Validation
 - Leverages HTML 5 input field types
 - Examples:
@@ -19,6 +22,7 @@ slidenumbers: true
 ```
 
 ---
+
 # Other Angular Validation Directives
 - pattern
 - minlength
@@ -27,6 +31,7 @@ slidenumbers: true
 - max
 
 ---
+
 # Validation Requires a Form
 - Even though the form won't get used to post the data
 - Used to attach validation errors to the form
@@ -37,6 +42,7 @@ slidenumbers: true
   - Must turn off browser validation (novalidate)
 
 ---
+
 # Example Form With Validation
 
 ``` html
@@ -55,6 +61,7 @@ slidenumbers: true
 ```
 
 ---
+
 # Form Validation Variables
 $prisine - true if user has not interacted
 $dirty - true if user has interacted
@@ -63,6 +70,7 @@ $invalid - true if not valid
 $error - detailed errors
 
 ---
+
 # Providing Feedback For Validation
 - Angular automatically applies CSS classes based on the status of the form inputs
 - Match concepts in the form
@@ -70,6 +78,7 @@ $error - detailed errors
 - Define CSS to match these classes based on the feedback desired
 
 ---
+
 # Angular Validation CSS Classes
 - ng-valid: the model is valid
 - ng-invalid: the model is invalid
@@ -81,6 +90,7 @@ $error - detailed errors
 - ng-untouched: the control hasn't been blurred
 
 ---
+
 # Define Styles
 - Report errors when you want how you want
 - Only after they've touched a field?
@@ -108,6 +118,7 @@ span.summary.ng-valid { color: green; }
 - Each validation has it's own property on the $error object
 
 ---
+
 # Validation Message Examples
 
 ``` html
@@ -128,23 +139,17 @@ E-mail:
 ```
 
 ---
+
 # Resetting Form States
 - Any named form in view is available in the scope
 - Call $setPristine() and $setUntouched() to return form to orignal state
 
 ---
+
 # More on Form Validation
 - Custom model update triggers
 - Custom validation
 [https://docs.angularjs.org/guide/forms](https://docs.angularjs.org/guide/forms)
-
----
-# Add Validation to Muzic
-- Use a form and validation attributes on view
-- Create some styles to provide feedback
-- Use REST to search for artist
-- Create a Factory for Artist Angular Resource
-- Add searching to the ArtistRestController
 
 ---
 # Summary
