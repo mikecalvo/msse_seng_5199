@@ -123,7 +123,6 @@ angular.module('app')
 ---
 
 # Example Built-in Services
-
 - $anchorScroll - scroll browser window
 - $animate - animate content transitions
 - $compile - process HTML fragment with directives
