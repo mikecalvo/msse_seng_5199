@@ -182,6 +182,8 @@ E-mail:
 <input ng-model="firstName" startsWithUpper />
 ```
 
+---
+
 ``` javascript
 var FIRST_LETTER_UPPER = /^[A-Z].+/;
 app.directive('startsWithUpper', function() {
