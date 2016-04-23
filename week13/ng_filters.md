@@ -1,8 +1,10 @@
-footer: © Citronella Software Ltd 2015
+footer: © Citronella Software Ltd 2016
 slidenumbers: true
 
 # Angular Filters
+
 ## Mike Calvo
+
 ## mike@citronellasoftware.com
 
 ---
@@ -14,6 +16,7 @@ slidenumbers: true
 - Typically used with directives
 
 ---
+
 # Example Built-in Filters:
 - currency
 - date
@@ -23,6 +26,7 @@ slidenumbers: true
 - lowercase
 
 ---
+
 # Using a Filter
 - Within data bindings:
 
@@ -33,6 +37,7 @@ slidenumbers: true
 ```
 
 ---
+
 # Locale-Specific Formats
 - Include the angular local file-specific to user's locale to get correct currency, number and date formats:
 
@@ -41,11 +46,13 @@ slidenumbers: true
 ```
 
 ---
+
 # Date Filter
 - Supports standard formatting using y, M, d, m, h, s
 - Logical formats
 
 ---
+
 # Date Logical Formats
 medium MMM d, y h:mm:s a
 short M/d/yy h:mm a
@@ -57,6 +64,7 @@ mediumTime h:mm:ss a
 shortTime h:mm a
 
 ---
+
 # JSON Filter
 - Good debugging tool
 - Converts the filtered value into JSON
@@ -66,6 +74,7 @@ shortTime h:mm a
 ```
 
 ---
+
 # Filtering Collections
 - Used with directives that operate on arrays (ng-repeat)
 - Example: limitTo
@@ -76,6 +85,7 @@ shortTime h:mm a
 ```
 
 ---
+
 # Selecting Items: filter Filter
 - Only use values that match the properties specified
 
@@ -84,6 +94,7 @@ shortTime h:mm a
 ```
 
 ---
+
 # Ordering Items: orderBy Filter
 
 ``` html
@@ -100,6 +111,7 @@ shortTime h:mm a
 ```
 
 ---
+
 # Chaining Filters
 - Use the | to chain filters together
 
@@ -108,6 +120,7 @@ shortTime h:mm a
 ```
 
 ---
+
 # Creating Your Own Filter
 - The module service has a method to create a filter
 - Return a function that accepts a value or array and returns the filtered result
@@ -127,6 +140,7 @@ angular.module('app').filter('labelCase', function() {
 ```
 
 ---
+
 # Example Collection Filter
 
 ``` javascript
@@ -150,6 +164,7 @@ angular.module('app').filter('skip', function() {
 ```
 
 ---
+
 # Reusing Filters In Code
 - Inject the $filter into your component
 - Look up the filter you want using the $filter service
@@ -161,6 +176,7 @@ module.controller('MyController', function($scope, $filter, values) {
 ```
 
 ---
+
 # Summary
 - Angular is strongly opinionated on where data transformation for display should happen
 - Do it in filters
