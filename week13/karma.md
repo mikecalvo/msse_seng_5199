@@ -1,8 +1,10 @@
-footer: © Citronella Software Ltd 2015
+footer: © Citronella Software Ltd 2016
 slidenumbers: true
 
 # Jasmine and Karma
+
 ## Mike Calvo
+
 ## mike@citronellasoftware.com
 
 ---
