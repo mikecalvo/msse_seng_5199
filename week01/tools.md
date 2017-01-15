@@ -62,8 +62,6 @@ slidenumbers: true
 - Use the SpringBoot CLI to:
 - Create a new project
 - Build your project
-- Run your project tests
-- Run/Debug your project
 
 ---
 
