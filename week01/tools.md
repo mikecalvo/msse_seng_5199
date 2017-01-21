@@ -9,10 +9,11 @@ slidenumbers: true
 
 # Overview
 - Java
-- Groovy/Grails
+- Groovy
+- Gradle
+- Spring
 - IDE
 - Source Code Control
-- Tomcat
 
 ---
 
@@ -31,20 +32,23 @@ slidenumbers: true
 # sdkman
 - [http://sdkman.io/](http://sdkman.io/)
 - Helps manage version of sdk and dev tools
-- Groovy/Grails/Gradle
+  - Groovy
+  - Gradle
+  - Spring
 - Install sdkman on Mac/Linux:
   `$ curl -s http://get.sdkman.io | bash`
 
 ---
 
 # Install Groovy and Spring
-- Install Groovy:
+- Install Groovy, Gradle and Spring:
   `$ sdk install groovy`
-- Install SpringBoot:
-`$ sdk install spring`
+  `$ sdk install gradle`
+  `$ sdk install spring`
 - Confirm:
   `$ sdk current`
   `$ groovy -version`
+  `$ gradle -version`
   `$ spring --version`
 
 ---
@@ -54,7 +58,25 @@ slidenumbers: true
 - Handy interactive debugging tool
 `$ groovyConsole`
 
-^ show Groovy Console in action
+---
+
+# Gradle
+- Open source build system
+- Build file written in Groovy
+- Based on concepts from earlier build tools
+  - Ant and Maven
+- Has become de facto build system for JVM projects
+
+---
+
+# Gradle Functions
+- Dependency management
+- Plugin model
+- Core tasks for typical build steps
+    - Compile
+    - Copy and transform files
+    - Run tests
+    - Create Archives
 
 ---
 
