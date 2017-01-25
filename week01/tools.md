@@ -44,7 +44,7 @@ slidenumbers: true
 - Install Groovy, Gradle and Spring:
   `$ sdk install groovy`
   `$ sdk install gradle`
-  `$ sdk install spring`
+  `$ sdk install springboot`
 - Confirm:
   `$ sdk current`
   `$ groovy -version`
