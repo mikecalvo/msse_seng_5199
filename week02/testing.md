@@ -1,9 +1,9 @@
-footer: © Citronella Software Ltd 2016
+footer: MSSE 2017
 slidenumbers: true
+theme: Next, 3
 
-# Testing Overview
-## Mike Calvo
-### mike@citronellasoftware.com
+## Testing Overview
+### MSSE 2017
 
 ---
 
@@ -27,11 +27,11 @@ slidenumbers: true
 
 ---
 
-# Test-Driven Development
-- Write a test before you write code
-  - Test fails until the code works
-- Pairing
-  - Take turns writing test/code
+# Testing strategies
+- TLD (Test last development)
+- TDD (Test driven development)
+- BDD (Behavior driven development)
+- Most important feature to have quality code coverage
 
 ---
 
@@ -81,11 +81,18 @@ slidenumbers: true
 
 ---
 
-# Running tests
-- Build tools are used to run tests in bulk
-- Typically run in order of specificity
-  - No point running smoke tests if a unit test fails
-- Grails works this way
+# JaCoCo
+
+- Popular test coverage tool
+- Provides coverage reports on every build (build/reports/jacoco)
+
+Add to build.gradle:
+
+```groovy
+apply plugin: 'jacoco'
+
+check.dependsOn jacocoTestReport
+```
 
 ---
 
@@ -119,85 +126,5 @@ slidenumbers: true
 # Don'ts
 - Use print statements in tests as verification
 - Ignore tests that fail intermittently
-- Assume enviornment has been setup externally
-  - Test setup should put system into proper state
-
----
-
-# Grails Testing
-- Grails supports 4 phases of testing
-- Supports many test frameworks: JUnit, TestNG, Spock
-- Executed using the grails command
-  `grails test-app`
-- HTML report produced in target/test-results
-- Organized by type in the project structure
-- Generates tests automatically
-
----
-
-# Grails Unit Tests
-- Simple tests that do not provide any of the Grails infrastructure at runtime
-- Test a single class or method
-- Mixins provide support for auto-wiring and mocking
-- Run quickly
-
----
-
-# Grails Mixins
-- @TestFor
-  - Defines the class under test
-  - Automatically injects a member of this type
-- @Mock
-  - Defines mocked classes used by test
-  - Automatically injects the mocks into test
-
----
-
-# TestFor
-- Provides convenient injections for controllers, services and domain classes
-- Example members added: @TestFor(SomeControllerClass)
-  - controller - instance of the SomeControllerClass
-  - params - a map of parameters sent to controller methods
-  - request - mock HTTP request with
-  - response - mock HTTP response with result of controller
-
----
-
-# More Grails Mixins
-- @GrailsUnitTestMixin
-    - doWithSpring
-    - doWithConfig
-- @FreshRuntime
-  - Clean app and Grails context for before each test
-
----
-
-# Even More Grails Mixins
-- @DirtiesRuntime
-  - A test will modify the runtime, will be cleaned after
-- @SharedRuntime
-  - Marks tests that can share a common runtime
-
----
-
-# Grails Integration Tests
-- GORM is initialized
-  - Data source specified in test config is used
-- Services and Controllers are wired together
-- Only thing missing is HTTP response
-- These take longer but get more coverage
-
----
-
-# Grails Functional Tests
-- Interact with the app via HTTP
-- Typically used to test the front door of the application
-  - UI or REST API
-
----
-
-# Final Grails Testing Tips
-- Grails Interactive Console
-  - Makes interactive test debugging faster
-- Complete documentation at grails.org
-  - [http://grails.org/doc/latest/guide/testing.html](http://grails.org/doc/latest/guide/testing.html)
+- Assume environment has been setup externally
+- Test setup should put system into proper state
