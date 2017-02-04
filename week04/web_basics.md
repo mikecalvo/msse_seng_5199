@@ -1,3 +1,4 @@
+autoscale: true
 footer: © Citronella Software Ltd 2017
 slidenumbers: true
 
