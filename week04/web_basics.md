@@ -39,6 +39,14 @@ slidenumbers: true
 
 ---
 
+# HTTP 1.1 Characteristics
+- Text-based
+- Stateless
+- Ordered
+- Blocking
+
+---
+
 # HTTP Request Format
 - Request method
 - URI (Uniform Resource Identifier)
