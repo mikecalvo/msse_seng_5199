@@ -2,21 +2,11 @@ autoscale: true
 footer: © Citronella Software Ltd 2017
 slidenumbers: true
 
-# Web Basics
+# HTTP Basics
 
 ## Mike Calvo
 
 ### mike@citronellasoftware.com
-
----
-
-# Objective
-- Provide high-level overview of technologies involved in delivering UI over the web
-  - HTTP
-  - HTML
-  - CSS
-- Web Application Constructs
-- JavaScript
 
 ---
 
@@ -112,154 +102,6 @@ slidenumbers: true
 - Document structure (headings, paragraphs, etc.)
 - Formatting (bold, centering, fonts)
 - Links (within the document to other resources)
-
----
-
-# HTML Basics
-- Basic page structure
-  - HTML, HEAD, BODY
-- Document structure
-  - P, H1, H2, H3
-
----
-
-# HTML Formatting & Visuals
-- Layout
-  - TABLE, DIV, BR
-- Formatting
-  - B, I, U, SPAN, CENTER
-- Visual Elements
-  - IMG, HR
-
----
-
-# HTML Forms
-- HTML provides a mechanism for submitting (POST method) data to a server
-- The FORM element represents a block of information that is entered by the user
-- INPUT elements within the form produce input controls in the page such as Checkboxes, Text Fields, Combo boxes, Buttons
-
----
-
-# Example Form
-```html
-<form action="process" method="post">
-  First Name: <input name="firstName" /><br/>
-  Last Name: <input name="lastName" /><br/>
-  Gender: <select name="gender">
-    <option>Select</option>
-    <option>Female</option>
-    <option>Male</option>
-  </select>
-  <input type="submit" />
-</form>
-```
-
----
-
-# Form Input Values
-- The values collected in the input fields are submitted as part of the request to the server using the input field name
-- GET method: Appended to URI after ?
-Example http://myserver/process?gender=Male&firstName=Mike
-- POST method: Included as request body
-
----
-
-# Styling HTML
-- While HTML supports styling using style attribute it’s use is discouraged
-- Recommended approach – CSS
-  - Cascading Style Sheets
-
----
-
-# What's Cascading?
-- Order of preference when applying styles:
-- Browser default
-- External style sheet
-- Internal style
-- Inline
-
----
-
-# Applying Styles
-- Selectors are use to apply styles
-- Selectors define which element(s) should be affected by the style block
-- Selectors can be a variety of things including: tag names, ids, and class names
-
----
-
-# CSS Selector examples:
-
-``` css
-/* Tag name */
-h1 {
-  color: red;
-}  
-
-/* Class (matches class attribute) */
-.heavy {
-  font-weight: bold
-}
-
-/* Id */
-#first-column {
-  width: 10px
-}
-```
-
----
-
-# Style Examples
-
-```html
-<html>
-<head>
-  <link rel="stylesheet" href="css/screen.css" />
-  <style type="text/css">
-    h1 { color: blue; }
-  </style>
-</head>
-<body>
-  <h1 style="font-size: large">Hello World</h1>
-</body>
-</html>
-```
-
----
-
-# Style Precedence
-- The closer a style is to the element it is styling the higher the precedence
-- For example: inline style overrides the same property from an internal style
-
----
-
-# Style Inheritance
-- Many styles cascade from parent into child elements
-- For example, a span within a paragraph that is styled to be red text will also have red text
-
----
-
-# CSS Terms
-- Rule => `h1 { color: blue; }`
-- Selector => `h1`
-- Declaration => `color: blue;`
-- Property => `color`
-- Value => `blue`
-
----
-
-# Advanced Selectors
-- HTML Element + class
-`h1.headline { color: black; }`
-Matches all h1 elements with a class attribute of “headline”
-- May be grouped
-
-`h1, h2, h3 {  font-family: sans-serif }`
-
----
-
-# Tips on CSS Properties
-- Intellisense tooling really helps here
-- IntelliJ has it
 
 ---
 
@@ -382,54 +224,58 @@ Matches all h1 elements with a class attribute of “headline”
 
 ---
 
-# Adding JavaScript
-- Inline: `<script>` element
-- External file: `<script src="file_path">`
-- Typically placed in HEAD of document but can exist within body as well
-- Code executed in order as found within the document
+# The Future: H2
+- Binary protocol
+- Multiplexed (vs Ordered and Blocking)
+- Parallelism within connection
+- Header compression to reduce overhead
+- Supports push responses to clients
+- Requires TLS (Transfer Layer Security)
 
 ---
 
-# Element Events
-- Most HTML elements support typical UI event attributes
-  - onclick, onmouseout, onmouseover, onkeydown, onkeyup
-- Form elements support
-  - onblur, onfocus, onchange, onselect, onsubmit
-- Documents support
-  - onload, onunload
+# Multiplexing
+- Allow multiple request and response messages to be in flight at the same time
+- Messages can be intermingled with each other on the wire
+- Client shares one connection channel for all messages to the origin
 
 ---
 
-# JavaScript Functions
-- Declared in SCRIPT element
-- Have a name and parameters
-- Parameters can be untyped
-- Can have a return value
+# Single connection
+- Typical for web pages/applications to open multiple connections to origin (CSS, JavaScript, API calls)
+- Multiple connections can result in network congestion and retransmits
+- Limiting messages to a single connection reduces load on network resources
 
 ---
 
-# Validation Example
+# Server Push
+- Servers can send CSS and JavaScript to browser caches as the HTML loads
+- Prevents the round trip of requests for content that is known to be needed
+- Proper use of this approach is still experimental
 
-```javascript
-def validate = function() {
-  var firstName = document.getElementById('first').value
-  if (!firstName) {
-    alert('First Name Required')
-  }
+---
 
-  return !!firstName
-}
-```
-```html
-<input type="submit" onclick="validate();" />
-```
+# Header Compression
+- Typical pages have about 1400 bytes of headers
+  - Cookies, Referer, Content-type, etc.
+- Header compression reduces the need for round-trips to server for simply retrieving headers
+  - Typically required to properly handle the response
+- Header-based latencies, especially on mobile networks, can often exceed several hundred milliseconds
 
+---
+
+# HTTP 2 Availability
+- Current versions of
+  - Edge
+  - Safari
+  - Chrome
+  - Firefox
+  
 ---
 
 # Summary
 - HTTP
   - Stateless response/request protocol
-- HTML Basic Structure of document for content and Layout
-- CSS is recommended way to style content
 - Programming models for the web involve abstraction layers above HTTP
 - JavaScript provides support for dynamic behavior
+- HTTP 2 is the future
