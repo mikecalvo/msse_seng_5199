@@ -1,0 +1,44 @@
+- Spring web + Spring Data REST
+- MVC - Model View Controller
+  - why MVC
+  - Model
+  - View
+  - Controller
+  - diagram
+- History
+  - Desktop UI clients
+  - Java Servlets
+    - Problems
+?- How does Spring help?
+  - Provides MVC framework
+  - Spring DispatcherServlet
+
+- Spring Web Support
+- Installing Spring Boot Web
+- Spring Model
+  - JPA Repository
+- Spring Controller
+  - Controller Basics
+    - Request Route Mappings
+      - Composed Request Mappings
+      - URI Template Patterns
+      - Path and Query Variables
+      - Regular Expression Patterns
+      - Advanced Route Mappings
+      - Request Body
+    - Route Method Arguments
+      - common
+      - others
+    - Return types
+      - View related
+      - @ModelAttribute
+      - @ResponseBodyß
+    - ResponseEntity
+- Spring MVC View patterns
+  - Controller/View Patterns
+    - Templated View Controller
+      - configure response
+      - Example
+    - Object View Controller
+      - @RestController
+      - Example
