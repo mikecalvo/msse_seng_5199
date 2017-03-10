@@ -1,7 +1,7 @@
 footer: © Citronella Software Ltd 2017
 slidenumbers: true
 
-# Javascript &amp; TypeScript
+# Javascript and TypeScript
 
 ## Mike Calvo
 
@@ -569,13 +569,14 @@ let greeter = new Greeter("world");
 ``` TypeScript
 class Employee {
     private _fullName: string;
+    public passcode
 
     get fullName(): string {
         return this._fullName;
     }
 
     set fullName(newName: string) {
-        if (passcode && passcode == "secret passcode") {
+        if (passcode == 'let me in')
             this._fullName = newName;
         }
         else {
@@ -589,7 +590,13 @@ class Employee {
 
 # Modules
 - Proper include functionality
+- Export Classes and Interfaces
+- Names can be changed for exporting
+- Define a default module
 
+---
+
+#Example Modules
 greet.ts:
 
 ``` TypeScript
@@ -604,6 +611,24 @@ main.ts:
 import { sayHello } from "./greet";
 
 console.log(sayHello("TypeScript"));
+```
+
+---
+
+#Example Default Export
+
+JQuery.ts
+
+``` TypeScript
+declare let $: JQuery;
+export default $;
+```
+
+App.ts
+
+``` TypeScript
+import $ from "JQuery";
+$("button.continue").html( "Next Step..." );
 ```
 
 ---
