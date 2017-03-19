@@ -1,11 +1,11 @@
-footer: © Citronella Software Ltd 2016
+footer: © 2017
 slidenumbers: true
 
 # Jasmine and Karma
 
-## Mike Calvo
+## Marc Kapke
 
-## mike@citronellasoftware.com
+## kapkema@gmail.com
 
 ---
 # Unit Testing Angular Code
@@ -258,7 +258,7 @@ config.set({
 ```
 
 ---
-# Integrating Karma and Grails
+# Integrating Karma and Gradle
 - Install Karma test runner grails plugin:
 
 In Build.Config:
