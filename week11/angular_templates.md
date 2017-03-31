@@ -55,7 +55,7 @@ slidenumbers: true
 ---
 
 # Expression operators
-- The pipe operator (|)
+- The pipe operator `|`
  - Pass expression result through one or more transformers
  - `{{title | uppercase}}`
 - The safe navigation operator (?)
