@@ -73,6 +73,14 @@ export class AppModule { }
 ---
 
 # Carousel control
+- Slideshow for cycling through a series of content
+- Built with CSS 3D transforms and JavaScript.
+- Can be a series of images, text, or custom markup.
+- Includes support for previous/next controls and indicators.
+
+---
+
+# Carousel control
 
 ``` html
 <div class="container" style="margin-top:5em;">
@@ -93,6 +101,13 @@ export class AppModule { }
 ---
 
 # Accordion control
+- Displays collapsible content panels
+- Used to present information in a limited amount of space.
+- Click headers to expand/collapse content
+
+---
+
+# Accordion control
 
 ``` html
 <div class="container" style="margin-top:5em;">
@@ -102,7 +117,8 @@ export class AppModule { }
         <template ngbPanelContent>
           <h3>{{article.byline}}</h3>
           {{article.abstract}}
-          <img class="accordion-image" [src]="getArticleImageUrl(article)" [alt]="getArticleImageCaption(article)" (click)="open(article)">
+          <img class="accordion-image" [src]="getArticleImageUrl(article)"
+          [alt]="getArticleImageCaption(article)" (click)="open(article)">
         </template>
       </ngb-panel>
     </ngb-accordion>
@@ -112,7 +128,14 @@ export class AppModule { }
 
 ---
 
-# Modals - view
+# Modals
+- Modals are dialog prompts
+- A number of use cases from user notification to completely custom content
+- Helpful subcomponents, sizes, and more.
+
+---
+
+# Modal - view
 
 ``` html
 <div class="modal-header">
@@ -122,7 +145,8 @@ export class AppModule { }
   </button>
 </div>
 <div class="modal-body">
- <app-article-detail [article]="article" [showContent]="false" [showTitle]="false" style="margin-top:-5em;"></app-article-detail>
+ <app-article-detail [article]="article" [showContent]="false"
+ [showTitle]="false" style="margin-top:-5em;"></app-article-detail>
 </div>
 <div class="modal-footer">
   <button type="button" class="btn btn-secondary" (click)="activeModal.close('Close click')">Close</button>
@@ -131,7 +155,7 @@ export class AppModule { }
 
 ---
 
-# Modals - component
+# Modal - component
 
 ``` javascript
 @Component({
@@ -151,7 +175,7 @@ export class ArticleDetailModalComponent {
 
 ---
 
-# Modals - open
+# Modal - open
 
 ``` javascript
 open(article: Article) {
@@ -159,6 +183,12 @@ open(article: Article) {
   modalRef.componentInstance.article = article;
 }
 ```
+---
+
+# Typeahead
+- AutoComplete behavior on input element
+- Type to narrow down results
+- Select from list of matching results
 
 ---
 
@@ -199,14 +229,24 @@ export class ArticleListSearchComponent extends ArticleListComponent {
 }
 ```
 
+---
+
+# Dropdown
+- Menu for displaying lists of links.
+- Toggle menu open and closed
+
+---
+
 # Dropdown - view
 
-``` javascript
+``` html
 <div ngbDropdown class="d-inline-block">
  <label>Category: </label>
- <button class="btn btn-outline-primary" id="dropdownMenu1" ngbDropdownToggle>{{selectedCategory}}</button>
+ <button class="btn btn-outline-primary" id="dropdownMenu1"
+ ngbDropdownToggle>{{selectedCategory}}</button>
  <div class="dropdown-menu" aria-labelledby="dropdownMenu1">
-   <button *ngFor="let category of categories" class="dropdown-item" (click)="onCategoryChange(category)">{{category}}</button>
+   <button *ngFor="let category of categories"
+   class="dropdown-item" (click)="onCategoryChange(category)">{{category}}</button>
  </div>
 </div>
 ```
