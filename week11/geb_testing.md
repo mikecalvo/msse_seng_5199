@@ -9,7 +9,7 @@ slidenumbers: true
 
 # UI Tests
 
-- Testing the view requires an end-to-end style approach
+- UI tests perform end-to-end verification
 - UI tests perform this verification
 - Server is running
 - Verifies the results against actual HTML and JavaScript runner
@@ -51,7 +51,7 @@ assert driver.findElement(By.id('bandNameHeading')).getText() == 'U2';
 - Groovy layer built on top of Selenium WebDriver
 - Multiple web drivers exist (Chrome, Firefox, PhantomJS)
 - Content DSL
-  `assert title == 'Welcome to Muzic'`
+  `assert title == 'Nyt Viewer!'`
 - jQuery style content inspection model:
   `$("#submitBtn").click();`
 
@@ -65,24 +65,17 @@ import geb.Browser
 Browser.drive {
   go "http://google.com/ncr"
 
-  // make sure we actually got to the page
   assert title == "Google"
 
-  // enter wikipedia into the search field
   $("input", name: "q").value("wikipedia")
 
-  // wait for the change to results page to happen
-  // (google updates the page dynamically without a new request)
   waitFor { title.endsWith("Google Search") }
 
-  // is the first link to wikipedia?
   def firstLink = $("li.g", 0).find("a.l")
   assert firstLink.text() == "Wikipedia"
 
-  // click the link
   firstLink.click()
 
-  // wait for Google's javascript to redirect to Wikipedia
   waitFor { title == "Wikipedia" }
 }
 ```
@@ -151,8 +144,16 @@ Browser.drive {
 - Any CSS selector the WebDriver supports is valid
 - Most CSS 3 selectors supported
 - [CSS3 Selectors](https://www.w3.org/TR/css3-selectors/)
-- element: `h1`, class: `h1.some-class`, id: `#some-element-it`
+
+---
+
+# CSS selector syntax
+- element: `h1`
+- class: `.some-class` or `h1.some-class`
+- id: `#some-element`
 - Advanced: `$('div.some-class p:first-child[title^="someth"]')`
+
+---
 
 # Index Matching
 - A single positive integer or integer range will restrict Matching
@@ -319,7 +320,7 @@ class PageWithDiv extends Page {
 
 # Page `at` verification
 - Page can define a check that the browser is actually at page.
-- Static `at` closure - returns true if at page, false if note
+- Static `at` closure - returns true if at page, false if not
 
 ``` groovy
 class PageWithAtChecker extends Page {
@@ -352,8 +353,7 @@ reportsDir = 'build/test-reports'
 atCheckWaiting = true
 
 // Run tests in Firefox by default
-driver = {
-  // Download and configure Marionette using https://github.com/bonigarcia/webdrivermanager
+driver = {  
   FirefoxDriverManager.getInstance().setup()
 
   new FirefoxDriver()
@@ -379,17 +379,11 @@ dependencies {
 ```
 
 ---
+
 # Functional Test Setup
 - Functional tests will likely require data to complete
 - Each functional test should setup their own data
 - Functional tests execute outside the Spring Boot app
-
----
-# Adding a Geb Test
-- Geb recommends a page-based approach to web testing
-- Each url gets its own Page class which defines the url and interesting elements
-- The Geb test navigates to the page and verifies the results and interacts with the page
-- Pages typically live in a pages package under the test package
 
 ---
 # Exmaple Get Article Detail Page
