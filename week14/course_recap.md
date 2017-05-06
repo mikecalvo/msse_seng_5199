@@ -1,4 +1,4 @@
-footer: © Citronella Software Ltd 2016
+footer: © Citronella Software Ltd 2017
 slidenumbers: true
 
 # Course Recap
@@ -12,7 +12,7 @@ slidenumbers: true
 # Data and Domain Modeling
 
 - Object Relational Mapping
-- Grails Domain Classes
+- Domain Classes
 - Querying Strategies
 - NO SQL Data Stores
 
@@ -24,7 +24,7 @@ slidenumbers: true
 - URL Routing
 - Request handling
 - MVC Architectures
-- Grails Controllers
+- SpringBoot Controllers
 
 ---
 
@@ -85,7 +85,7 @@ slidenumbers: true
 
 - Groovy
 - JavaScript
-- Grails
+- SpringBoot
 - Gradle
 
 ---
@@ -95,7 +95,8 @@ slidenumbers: true
 - Git
 - IntelliJ
 - NodeJS
-- Bower
+- Geb
+- Jasmine
 
 ---
 
